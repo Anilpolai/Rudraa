@@ -3,10 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
 import gsap from "gsap";
 import "./header.css";
+import logo from '../../img/Rudraalogo.png'
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const headerRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   // GSAP animation for sidebar
   useEffect(() => {
@@ -25,19 +28,46 @@ function Header() {
     }
   }, [menuOpen]);
 
+  // Header show/hide on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > lastScrollY.current && currentScroll > 80) {
+        // scrolling down -> hide header
+        gsap.to(headerRef.current, {
+          y: "-120%",
+          duration: 0.5,
+          ease: "power3.inOut",
+        });
+      } else {
+        // scrolling up -> show header
+        gsap.to(headerRef.current, {
+          y: "0%",
+          duration: 0.5,
+          ease: "power3.inOut",
+        });
+      }
+
+      lastScrollY.current = currentScroll;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       {/* ================= Desktop Header ================= */}
-      <div className="header-container desktop-header">
+      <div className="header-container desktop-header" ref={headerRef}>
         <div className="header">
           {/* Logo */}
-          <Link to="/" className="logo">
+          <div  className="logo">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png"
+              src={logo}
               alt="logo"
             />
-            <h2>FOODU</h2>
-          </Link>
+          </div>
 
           {/* Nav Links */}
           <ul className="nav">
@@ -54,7 +84,6 @@ function Header() {
               <FaShoppingCart />
               <span className="badge">3</span>
             </Link>
-            {/* Hamburger always visible on smaller viewports */}
             <div className="hamburger" onClick={() => setMenuOpen(true)}>
               <FaBars />
             </div>
