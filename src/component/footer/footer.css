@@ -1,60 +1,87 @@
-/* ================================
-   Footer Base Styles
-=================================*/
+/* ======================================
+   Base Footer Layout
+====================================== */
 .footer {
-  background-color: #002b2f;
+  background-color: #042b2f;
   color: #fff;
-  /* height: 600px; desktop fixed height */
-  padding: 70px 0 30px;
   font-family: "Poppins", sans-serif;
+  padding: 80px 5% 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 1298px; /* ✅ perfect centered width */
+}
+
+/* ======================================
+   Grid Layout
+====================================== */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.3fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Each Column */
+.footer-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 18px;
+}
+
+/* ======================================
+   Logo & Brand
+====================================== */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .footer-logo-img {
-  width: 60px;
-  margin-right: 12px;
+  width: 55px;
 }
 
 .footer-brand {
-  font-weight: bold;
-  color: #fff;
+  font-weight: 700;
   font-size: 22px;
+  color: #fff;
 }
 
 .footer-text {
-  margin-bottom: 25px;
   color: #d9d9d9;
+  line-height: 1.8;
   font-size: 15px;
-  line-height: 1.7;
 }
 
-/* ================================
+/* ======================================
    Opening Hours
-=================================*/
+====================================== */
 .footer-hours p {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding: 6px 0;
   font-size: 14px;
   color: #ccc;
 }
 
-/* ================================
+/* ======================================
    Section Titles
-=================================*/
+====================================== */
 .footer-title {
-  font-weight: bold;
-  margin-bottom: 18px;
+  font-weight: 700;
   font-size: 18px;
+  margin-bottom: 10px;
   color: #fff;
 }
 
-/* ================================
+/* ======================================
    Explore Links
-=================================*/
+====================================== */
 .footer-links {
   list-style: none;
   padding: 0;
@@ -64,17 +91,18 @@
 .footer-links li {
   margin-bottom: 10px;
   cursor: pointer;
-  transition: color 0.3s;
   font-size: 15px;
+  color: #ccc;
+  transition: color 0.3s;
 }
 
 .footer-links li:hover {
   color: #ff0033;
 }
 
-/* ================================
+/* ======================================
    Contact Info
-=================================*/
+====================================== */
 .footer-contact {
   list-style: none;
   padding: 0;
@@ -82,87 +110,72 @@
 }
 
 .footer-contact li {
-  margin-bottom: 15px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 15px;
+  gap: 10px;
   color: #ccc;
+  font-size: 15px;
+  margin-bottom: 12px;
 }
 
-/* 🔴 Round contact icons */
 .footer-contact li svg {
-  background: #ff0033;
-  color: #fff;
-  border-radius: 50%;
-  padding: 8px;
-  font-size: 16px;
-  flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  color: #ff0033;
+  font-size: 18px;
 }
 
-/* ================================
-   Newsletter Form
-=================================*/
+/* ======================================
+   Newsletter
+====================================== */
 .newsletter-box {
   display: flex;
   align-items: center;
-  justify-content: center;
-  max-width: 600px;
-  margin: 20px auto;
-  background: #fff;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow: 0px 6px 20px rgba(0,0,0,0.12);
+  border-bottom: 1px solid #666;
+  padding-bottom: 10px;
+  gap: 10px;
 }
 
-/* 📩 Input Box */
 .newsletter-input {
   flex: 1;
   border: none;
-  padding: 18px 22px;
-  font-size: 16px;
+  background: transparent;
+  color: #fff;
+  font-size: 15px;
   outline: none;
-  color: #333;
-  border-radius: 50px 0 0 50px;
+  padding: 10px 0;
 }
 
-/* 🔴 Subscribe Button */
+.newsletter-input::placeholder {
+  color: #bbb;
+}
+
 .footer-btn {
   background: #ff0033;
   color: #fff;
   border: none;
-  padding: 18px 40px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 0 50px 50px 0;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
+  transition: 0.3s;
 }
 
 .footer-btn:hover {
   background: #fff;
   color: #ff0033;
-  transform: scale(1.1);
-  box-shadow: 0 6px 14px rgba(255, 0, 51, 0.45);
 }
 
-/* ================================
+/* ======================================
    Social Icons
-=================================*/
+====================================== */
 .footer-social {
-  margin-top: 25px;
-  text-align: left;
+  margin-top: 20px;
 }
 
 .footer-social span {
   display: block;
-  margin-bottom: 12px;
-  font-weight: 500;
   font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .social-icons {
@@ -171,58 +184,65 @@
 }
 
 .social-icons a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  border: 2px solid #fff;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  color: #002b2f;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
 .social-icons a:hover {
-  background-color: #ff0033;
-  border-color: #ff0033;
+  background: #ff0033;
   color: #fff;
-  transform: rotate(360deg) scale(1.15);
+  transform: scale(1.1);
+}
+/* ======================================
+   GSAP + Hover Animation for Icons
+====================================== */
+.social-icon {
+  transition: transform 0.4s ease, background 0.3s, color 0.3s;
 }
 
-/* ================================
-   Bottom Copyright
-=================================*/
+.social-icon:hover {
+  transform: rotate(10deg) scale(1.2);
+}
+
+/* ======================================
+   Bottom Section
+====================================== */
 .footer-bottom {
-  margin-top: 25px;
+  margin-top: 50px;
   font-size: 14px;
   color: #aaa;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 25px;
 }
 
-/* ================================
-   Responsive
-=================================*/
+/* ======================================
+   Responsive Layout
+====================================== */
 @media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
   .footer {
     text-align: center;
-    height: auto; /* responsive height */
   }
 
   .footer-logo {
     justify-content: center;
   }
 
-  .footer-links li {
-    display: inline-block;
-    margin: 6px 12px;
-  }
-
   .footer-contact li {
     justify-content: center;
-  }
-
-  .footer-social {
-    text-align: center;
   }
 
   .social-icons {
@@ -231,36 +251,32 @@
 }
 
 @media (max-width: 576px) {
-  .footer {
-    padding: 45px 0 20px;
-    height: auto; /* mobile height auto */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
   }
 
-  /* Newsletter stacked on mobile */
+  .footer {
+    padding: 60px 20px 25px;
+  }
+
   .newsletter-box {
     flex-direction: column;
-    border-radius: 20px;
-    padding: 15px;
+    align-items: stretch;
+    border: none;
+    gap: 12px;
   }
 
   .newsletter-input {
-    border-radius: 20px;
-    margin-bottom: 12px;
-    width: 100%;
-    text-align: center;
-    font-size: 15px;
+    background: #fff;
+    color: #333;
+    border-radius: 6px;
+    padding: 12px 16px;
   }
 
   .footer-btn {
     width: 100%;
-    border-radius: 20px;
-    padding: 14px;
-    font-size: 15px;
-  }
-
-  .social-icons a {
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
+    border-radius: 6px;
+    padding: 12px;
   }
 }
