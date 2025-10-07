@@ -42,7 +42,9 @@
 }
 
 .footer-logo-img {
-  width: 55px;
+  width: 150px;
+  position: relative;
+  top: -20px;
 }
 
 .footer-brand {

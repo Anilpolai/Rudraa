@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import logo  from '../../img/Rudraalogo.png'
 import {
   FaFacebookF,
   FaInstagram,
@@ -32,8 +33,7 @@ const Footer = () => {
           {/* Logo & Info */}
           <div className="footer-col">
             <div className="footer-logo">
-              <img src="/logo192.png" alt="Foodu Logo" className="footer-logo-img" />
-              <h3 className="footer-brand">FOODU</h3>
+              <img src={logo} alt="Foodu Logo" className="footer-logo-img" />
             </div>
             <p className="footer-text">
               Discover culinary delights, recipes and inspiration in our food haven.

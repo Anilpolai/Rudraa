@@ -74,8 +74,8 @@ function Header() {
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/page">Pages <span className="arrow">▼</span></NavLink></li>
             <li><NavLink to="/product">Product</NavLink></li>
-            <li><NavLink to="/blog">Blog</NavLink></li>
-            <li><NavLink to="/shop">Shop <span className="arrow">▼</span></NavLink></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
 
           {/* Cart + Menu */}
@@ -120,7 +120,7 @@ function Header() {
           <li><NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
           <li><NavLink to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink></li>
           <li><NavLink to="/products" onClick={() => setMenuOpen(false)}>Product</NavLink></li>
-          <li><NavLink to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink></li>
+          <li><NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink></li>
           <li><NavLink to="/shop" onClick={() => setMenuOpen(false)}>Shop</NavLink></li>
         </ul>
       </div>

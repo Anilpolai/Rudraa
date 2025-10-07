@@ -1,0 +1,268 @@
+/* 🌄 PAGE BANNER */
+.page-banner {
+  background: center/cover no-repeat;
+  width: 100%;
+  height: 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.banner-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.banner-overlay h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  animation: fadeInDown 1s ease;
+}
+
+.banner-overlay p {
+  color: #ddd;
+  font-size: 1rem;
+}
+
+.banner-overlay i {
+  color: #de1d1d;
+  margin-right: 6px;
+}
+
+.banner-overlay span {
+  margin: 0 6px;
+  color: #fff;
+}
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 🍔 PRODUCT SECTION */
+.product-page {
+  padding: 60px 5%;
+  font-family: "Poppins", sans-serif;
+  background-color: #fafafa;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
+.grid-toggle button {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.grid-toggle button.active {
+  background: #de1d1d;
+  color: #fff;
+  border-color: #de1d1d;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  gap: 25px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 🍟 PRODUCT CARD */
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image Box */
+.img-box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.img-box img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Overlay with Circular Icon */
+.overlay {
+  position: absolute;
+  /* top: 0; */
+  /* right: 0; */
+  width: 80px;
+  height: 100%;
+  background: rgba(222, 29, 29, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.4s ease;
+}
+
+.product-card:hover .overlay {
+  right: 0;
+}
+
+.icon-circle {
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  color: #de1d1d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.icon-circle:hover {
+  background: #de1d1d;
+  color: #fff;
+}
+
+.view-icon {
+  font-size: 20px;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #de1d1d;
+  color: white;
+  padding: 4px 9px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Text */
+h3 {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.category {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.price {
+  margin-top: 8px;
+}
+
+.price .new {
+  color: #de1d1d;
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+.price .old {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.pagination button {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  margin: 0 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination button.active {
+  background: #de1d1d;
+  color: #fff;
+  border-color: #de1d1d;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-4,
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-banner {
+    height: 220px;
+  }
+
+  .banner-overlay h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-4,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
