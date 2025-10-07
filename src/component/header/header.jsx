@@ -43,8 +43,8 @@ function Header() {
           <ul className="nav">
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/pages">Pages <span className="arrow">▼</span></NavLink></li>
-            <li><NavLink to="/products">Product <span className="arrow">▼</span></NavLink></li>
-            <li><NavLink to="/blog">Blog <span className="arrow">▼</span></NavLink></li>
+            <li><NavLink to="/products">Product</NavLink></li>
+            <li><NavLink to="/blog">Blog</NavLink></li>
             <li><NavLink to="/shop">Shop <span className="arrow">▼</span></NavLink></li>
           </ul>
 
