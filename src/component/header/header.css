@@ -253,6 +253,7 @@
   .header-container {
     width: 80%;
   }
+ 
 }
 
 @media (max-width: 768px) {
@@ -262,6 +263,10 @@
   .mobile-header {
     display: flex;
   }
+  .mobile-header .logo img {
+    width: 89px;
+    height: 52px;
+}
 }
 /* Make sure hamburger shows properly */
 .hamburger {
