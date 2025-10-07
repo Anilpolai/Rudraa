@@ -62,18 +62,18 @@ function Header() {
       <div className="header-container desktop-header" ref={headerRef}>
         <div className="header">
           {/* Logo */}
-          <div  className="logo">
+          <Link to="/" className="logo">
             <img
               src={logo}
               alt="logo"
             />
-          </div>
+          </Link>
 
           {/* Nav Links */}
           <ul className="nav">
             <li><NavLink to="/" end>Home</NavLink></li>
-            <li><NavLink to="/pages">Pages <span className="arrow">▼</span></NavLink></li>
-            <li><NavLink to="/products">Product</NavLink></li>
+            <li><NavLink to="/page">Pages <span className="arrow">▼</span></NavLink></li>
+            <li><NavLink to="/product">Product</NavLink></li>
             <li><NavLink to="/blog">Blog</NavLink></li>
             <li><NavLink to="/shop">Shop <span className="arrow">▼</span></NavLink></li>
           </ul>
@@ -99,10 +99,10 @@ function Header() {
 
         <Link to="/" className="logo">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png"
+            src={logo}
             alt="logo"
           />
-          <h2>FOODU</h2>
+          
         </Link>
 
         <Link to="/cart" className="cart">
