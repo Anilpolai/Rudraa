@@ -121,7 +121,7 @@ function Header() {
           <li><NavLink to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink></li>
           <li><NavLink to="/product" onClick={() => setMenuOpen(false)}>Product</NavLink></li>
           <li><NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink></li>
-          <li><NavLink to="/shop" onClick={() => setMenuOpen(false)}>Shop</NavLink></li>
+          <li><NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink></li>
         </ul>
       </div>
 
