@@ -1,0 +1,59 @@
+/* 🌆 Common Page Header with Dark Overlay */
+.page-header {
+  position: relative;
+  background-image: url("../../img/back8.jpg"); /* ✅ same background for all pages */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-header .overlay {
+  position: absolute;
+  inset: 0;
+  /* background: rgba(0, 0, 0, 0.6); */
+  z-index: 1;
+}
+
+.page-header .content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.page-header .page-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.page-header .breadcrumb {
+  font-size: 1rem;
+  color: #eee;
+}
+
+.page-header .breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.page-header .breadcrumb a:hover {
+  color: #ffcc00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-header {
+    height: 220px;
+  }
+  .page-header .page-title {
+    font-size: 2rem;
+  }
+}
