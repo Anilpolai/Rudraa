@@ -40,7 +40,7 @@ export default function ProductSection() {
             <img
               src={ketchup1}
               alt="Premium Tomato Ketchup Bottle"
-              className="product-img"
+              className="product-img1"
               loading="lazy"
             />
           </div>

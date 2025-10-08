@@ -62,8 +62,7 @@ export default function ProductGrid() {
   return (
     <div className="container py-5">
       <div className="text-center mb-4">
-        <h2 className="fw-bold">🍕 Our Products 🍔</h2>
-        <p className="text-muted">Real 3D Motion & Zoom Effect</p>
+        <h2 className="fw-bold">Our Products </h2>
       </div>
 
       <div className="row g-4 justify-content-center">
