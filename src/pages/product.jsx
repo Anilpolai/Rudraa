@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { FaHeart, FaEye, FaShoppingCart } from "react-icons/fa";
 import VanillaTilt from "vanilla-tilt";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Product.css";
+import "./product.css";
 
 const products = [
   {
