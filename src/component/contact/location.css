@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600&family=Oswald:wght@200..700&display=swap');
+
+/* 🌍 Base Section */
+.location {
+  min-height: 800px;
+  padding: 80px 0 90px 240px;
+  background-image: url(../../img/map.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+/* 🧭 Contact Card */
+.contact-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 80px 60px;
+  position: relative;
+  left: 65px;
+  width: 600px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contact-container .title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+.contact-container .disc {
+  font-size: 17px;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  color: #666;
+}
+
+/* 📞 Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+
+.info-block:hover {
+  transform: translateX(8px);
+}
+
+.icon {
+  font-size: 22px;
+  padding: 15px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🎨 Icon Colors */
+.i-p { background-color: #de1d1d; } /* red */
+.i-l { background-color: #f76e2a; } /* orange */
+.i-e { background-color: #072b31; } /* dark blue */
+
+.indisc h4 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.indisc p {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* 🌐 Responsive Design */
+
+/* ----------- Laptops & Tablets ----------- */
+@media (max-width: 1200px) {
+  .location {
+    padding: 70px 60px;
+    justify-content: center;
+  }
+
+  .contact-container {
+    width: 80%;
+    left: 0;
+    padding: 70px 50px;
+  }
+}
+
+/* ----------- Tablets (Portrait) ----------- */
+@media (max-width: 1024px) {
+  .location {
+    flex-direction: column;
+    padding: 60px 40px;
+    align-items: center;
+  }
+
+  .contact-container {
+    width: 90%;
+    left: 0;
+    padding: 60px 40px;
+  }
+
+  .contact-container .title {
+    font-size: 32px;
+  }
+
+  .contact-container .disc {
+    font-size: 16px;
+  }
+}
+
+/* ----------- Mobile (max-width: 768px) ----------- */
+@media (max-width: 768px) {
+  .location {
+    min-height: auto;
+    padding: 50px 20px;
+    background-size: contain;
+  }
+
+  .contact-container {
+    width: 100%;
+    padding: 45px 30px;
+    left: 0;
+  }
+
+  .contact-container .title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .contact-container .disc {
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .contact-info {
+    gap: 25px;
+  }
+
+  .info-block {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .indisc h4 {
+    font-size: 1rem;
+  }
+
+  .indisc p {
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    font-size: 18px;
+    padding: 12px;
+  }
+}
+
+/* ----------- Small Mobile (max-width: 480px) ----------- */
+@media (max-width: 480px) {
+  .location {
+    padding: 40px 15px;
+  }
+
+  .contact-container {
+    padding: 35px 20px;
+    width: 100%;
+  }
+
+  .contact-container .title {
+    font-size: 24px;
+  }
+
+  .contact-container .disc {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .icon {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .indisc h4 {
+    font-size: 0.95rem;
+  }
+
+  .indisc p {
+    font-size: 0.85rem;
+  }
+}

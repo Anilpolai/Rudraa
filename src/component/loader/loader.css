@@ -1,0 +1,108 @@
+/* Loader Container */
+.rudraa-loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #1a0000, #000000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+  perspective: 1000px;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+/* Morphing Glowing Circle */
+.loader-circle {
+  width: 140px;
+  height: 140px;
+  border: 8px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #ffcc00;
+  border-radius: 50%;
+  margin-bottom: 40px;
+  box-shadow: 0 0 40px #ff2020, 0 0 80px #ffcc00;
+  transform-origin: center;
+  animation: pulse 2s infinite alternate,
+             morph 3s infinite ease-in-out,
+             rotate 6s linear infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px #ff2020, 0 0 40px #ffcc00;
+  }
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 50px #ff2020, 0 0 100px #ffcc00;
+  }
+}
+
+/* Morphing Animation */
+@keyframes morph {
+  0% { border-radius: 50% 50% 50% 50%; }
+  25% { border-radius: 50% 50% 50% 50%; }
+  50% { border-radius: 50% 50% 50% 50%; }
+  75% { border-radius:50% 50% 50% 50%; }
+  100% { border-radius: 50% 50% 50% 50%; }
+}
+
+/* Rotate Animation */
+@keyframes rotate {
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1.05); }
+}
+
+/* Loader Text */
+.loader-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Neon Text Animation */
+.loader-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: charFade 1s forwards;
+  text-shadow: 0 0 5px #ffcc00, 0 0 10px #ff2020, 0 0 20px #ffcc00;
+}
+
+/* Letter Reveal Animation */
+@keyframes charFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade Out Loader */
+.loader-hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .loader-text {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+  .loader-circle {
+    width: 90px;
+    height: 90px;
+    border-width: 6px;
+  }
+}
