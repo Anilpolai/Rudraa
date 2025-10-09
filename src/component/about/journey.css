@@ -1,0 +1,126 @@
+/* 🌄 Hero Section */
+.journey-hero {
+  height: 80vh;
+  background: center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.hero-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  animation: fadeInDown 1s ease;
+}
+
+.hero-overlay p {
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fadeInUp 1.2s ease;
+}
+
+@keyframes fadeInDown {
+  from { transform: translateY(-40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 🕒 Timeline Section */
+.journey-timeline {
+  position: relative;
+  padding: 120px 0;
+  display: grid;
+  gap: 100px;
+  background: linear-gradient(180deg, #fafafa, #ffffff);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item.left .timeline-content { order: 2; }
+.timeline-item.right .timeline-content { order: 1; }
+
+.timeline-img img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transition: transform 0.6s ease;
+}
+
+.timeline-item:hover img { transform: scale(1.05); }
+
+.timeline-content {
+  background: #fff;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
+
+.timeline-content h2 { color: #de1d1d; font-size: 2rem; margin-bottom: 8px; }
+.timeline-content h3 { font-size: 1.4rem; font-weight: 600; color: #333; margin-bottom: 12px; }
+.timeline-content p { font-size: 1rem; color: #555; line-height: 1.7; }
+
+/* 🔢 Counter Section */
+.journey-counter {
+  background: #de1d1d;
+  color: #fff;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.counter-item h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 8px; }
+.counter-item p { font-size: 1.1rem; letter-spacing: 1px; opacity: 0.9; }
+
+/* 📱 Responsive Timeline for Mobile */
+@media (max-width: 900px) {
+  .timeline-line { display: none; }
+
+  .journey-timeline { gap: 60px; padding: 80px 5%; }
+
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Alternate mobile layout */
+  .timeline-item:nth-child(odd) .timeline-img { order: 1; }
+  .timeline-item:nth-child(odd) .timeline-content { order: 2; }
+  .timeline-item:nth-child(even) .timeline-img { order: 2; }
+  .timeline-item:nth-child(even) .timeline-content { order: 1; }
+
+  .hero-overlay h1 { font-size: 2.3rem; }
+  .hero-overlay p { font-size: 1rem; letter-spacing: 1.5px; }
+  .timeline-content { padding: 25px; }
+}

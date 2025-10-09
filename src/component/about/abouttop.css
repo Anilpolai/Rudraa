@@ -1,0 +1,59 @@
+.abouttop {
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    height: 80vh;
+}
+
+/* Accent Red Stripe */
+.abouttop .bg-accent {
+    position: absolute;
+    bottom: 0;
+    right: 12px;
+    width: 30%;
+    height: 100%;
+    background: #e00027;
+    z-index: 0;
+}
+
+/* Image */
+.abouttop .image-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.abouttop img {
+    max-width: 420px;
+    border: 10px solid #fff;
+    object-fit: cover;
+}
+
+/* Stats */
+.abouttop .stats h2 {
+    font-size: 2.5rem;
+}
+
+.abouttop .stats p {
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .abouttop {
+        height: auto;
+        padding: 60px 0;
+    }
+
+    .abouttop h1 {
+        font-size: 2rem;
+    }
+
+    .abouttop .bg-accent {
+        width: 100%;
+        height: 40%;
+        bottom: 0;
+        top: auto;
+        border-radius: 0;
+    }
+}
