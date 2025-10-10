@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectReviews,
-  selectCurrentIndex,
+  selectCurrentReviewIndex,
   nextReview,
   prevReview,
 } from "../../Redux/Slice/roote";
@@ -11,9 +11,11 @@ import "./ReviewSection.css";
 
 export default function ReviewSection() {
   const dispatch = useDispatch();
-  const reviews = useSelector(selectReviews);
-  const currentIndex = useSelector(selectCurrentIndex);
+  const reviews = useSelector(selectReviews) || [];
+  const currentIndex = useSelector(selectCurrentReviewIndex) || 0;
   const review = reviews[currentIndex];
+
+  if (!review) return <p>No reviews available.</p>;
 
   return (
     <section className="review-section">
@@ -29,8 +31,8 @@ export default function ReviewSection() {
         <p className="review-text">"{review.text}"</p>
 
         <div className="review-images">
-          <img src={review.foodImg} alt="food" className="food-img" />
-          <img src={review.userImg} alt={review.name} className="user-img" />
+          {review.foodImg && <img src={review.foodImg} alt="food" className="food-img" />}
+          {review.userImg && <img src={review.userImg} alt={review.name} className="user-img" />}
         </div>
 
         <h4 className="review-name">{review.name}</h4>

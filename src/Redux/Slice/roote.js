@@ -1,32 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import product from "../../jsfile/product";
-import team from "../../jsfile/team";
 import review from "../../jsfile/review";
 
 /* =============================
- 🧂 PRODUCT SLICE
+🧂 PRODUCT SLICE
 ============================= */
 const productsSlice = createSlice({
   name: "products",
-  initialState: product,
+  initialState: product, // <-- product is an object { dishes: [...] }
   reducers: {},
 });
 
 /* =============================
- 👨‍🍳 TEAM SLICE
-============================= */
-const teamSlice = createSlice({
-  name: "team",
-  initialState: team,
-  reducers: {
-    addMember: (state, action) => {
-      state.members.push(action.payload);
-    },
-  },
-});
-
-/* =============================
- ⭐ REVIEW SLICE
+⭐ REVIEW SLICE
 ============================= */
 const reviewSlice = createSlice({
   name: "reviews",
@@ -37,64 +23,64 @@ const reviewSlice = createSlice({
     },
     prevReview: (state) => {
       state.currentIndex =
-        (state.currentIndex - 1 + state.reviews.length) %
-        state.reviews.length;
+        (state.currentIndex - 1 + state.reviews.length) % state.reviews.length;
     },
   },
 });
 
 /* =============================
- 🛒 CART SLICE
+🧱 ROOT SLICE (Cart + Wishlist)
 ============================= */
-const cartSlice = createSlice({
-  name: "cart",
-  initialState: {
-    items: [], // { id, name, price, quantity }
-  },
+const initialState = {
+  cart: [],
+  wishlist: [],
+};
+
+const rootSlice = createSlice({
+  name: "root",
+  initialState,
   reducers: {
     addToCart: (state, action) => {
-      const existing = state.items.find(
-        (item) => item.id === action.payload.id
-      );
+      const existing = state.cart.find((item) => item.id === action.payload.id);
       if (existing) {
-        existing.quantity += 1;
+        existing.quantity += action.payload.quantity || 1;
       } else {
-        state.items.push({ ...action.payload, quantity: 1 });
+        state.cart.push({ ...action.payload, quantity: action.payload.quantity || 1 });
       }
     },
     removeFromCart: (state, action) => {
-      state.items = state.items.filter(
-        (item) => item.id !== action.payload
-      );
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
-    clearCart: (state) => {
-      state.items = [];
+    addToWishlist: (state, action) => {
+      const exists = state.wishlist.find((item) => item.id === action.payload.id);
+      if (!exists) {
+        state.wishlist.push(action.payload);
+      }
+    },
+    removeFromWishlist: (state, action) => {
+      state.wishlist = state.wishlist.filter((item) => item.id !== action.payload);
     },
   },
 });
 
 /* =============================
- 🚀 EXPORT ACTIONS
+🚀 EXPORT ACTIONS
 ============================= */
-export const { addMember } = teamSlice.actions;
+export const { addToCart, removeFromCart, addToWishlist, removeFromWishlist } = rootSlice.actions;
 export const { nextReview, prevReview } = reviewSlice.actions;
-export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 
 /* =============================
 🔍 SELECTORS
 ============================= */
 export const selectDishes = (state) => state.products.dishes;
-export const selectTeamMembers = (state) => state.team.members;
+export const selectWishlistItems = (state) => state.root.wishlist;
+export const selectCartItems = (state) => state.root.cart;
 export const selectReviews = (state) => state.reviews.reviews;
 export const selectCurrentReviewIndex = (state) => state.reviews.currentIndex;
-export const selectCurrentIndex = (state) => state.reviews.currentIndex; // ✅ now explicitly exported
-export const selectCartItems = (state) => state.cart.items;
-
 
 /* =============================
- 🧱 EXPORT REDUCERS FOR STORE
+🧱 EXPORT REDUCERS
 ============================= */
 export const productsReducer = productsSlice.reducer;
-export const teamReducer = teamSlice.reducer;
 export const reviewReducer = reviewSlice.reducer;
-export const cartReducer = cartSlice.reducer;
+export const rootReducer = rootSlice.reducer;

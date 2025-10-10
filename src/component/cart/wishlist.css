@@ -1,0 +1,27 @@
+.wishlist-card {
+  border-radius: 20px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.wishlist-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.wishlist-page h2 {
+  font-size: 2rem;
+}
+
+@media (max-width: 576px) {
+  .wishlist-img {
+    height: 150px;
+  }
+}

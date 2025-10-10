@@ -1,18 +1,12 @@
-// src/Redux/store.js
 import { configureStore } from "@reduxjs/toolkit";
-import {
-  productsReducer,
-  teamReducer,
-  reviewReducer,
-  cartReducer,
-} from "../Slice/roote";
+import { productsReducer, reviewReducer, rootReducer } from "../Slice/roote";
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     products: productsReducer,
-    team: teamReducer,
     reviews: reviewReducer,
-    cart: cartReducer,
+    root: rootReducer, // ✅ matches selector state.root.wishlist
   },
 });
-export default store; 
+
+export default store;
