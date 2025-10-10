@@ -7,6 +7,10 @@ import PageHeader from "../component/PageHeader/PageHeader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./product.css";
 
+// Toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function ProductGrid() {
   const dispatch = useDispatch();
   const products = useSelector(selectDishes);
@@ -30,6 +34,19 @@ export default function ProductGrid() {
     return () =>
       tiltRefs.current.forEach((el) => el && el.vanillaTilt?.destroy());
   }, [products]);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({ id: product.id, name: product.name, price: product.price }));
+    toast.success(`${product.name} added to cart!`, {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   return (
     <>
@@ -75,7 +92,9 @@ export default function ProductGrid() {
                   </p>
                   <button
                     className="btn btn-outline-dark btn-sm rounded-pill px-3"
-                    onClick={() => dispatch(addToCart({ id, name, price }))}
+                    onClick={() =>
+                      handleAddToCart({ id, name, price })
+                    }
                   >
                     <FaShoppingCart className="me-2" /> Add to Cart
                   </button>
@@ -85,6 +104,9 @@ export default function ProductGrid() {
           ))}
         </div>
       </div>
+
+      {/* Toast Container */}
+      <ToastContainer />
     </>
   );
 }
