@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./loader.css";
+import loader from "../../img/Rudraalogo.png";
 
 export default function Loader({ onComplete }) {
   const [hide, setHide] = useState(false);
@@ -15,14 +16,10 @@ export default function Loader({ onComplete }) {
 
   return (
     <div className={`rudraa-loader ${hide ? "loader-hide" : ""}`}>
-      <div className="loader-circle"></div>
-      <h1 className="loader-text">
-        {"RUDRAA FOODS".split("").map((char, i) => (
-          <span key={i} style={{ animationDelay: `${i * 0.1}s` }}>
-            {char}
-          </span>
-        ))}
-      </h1>
+      <div className="loader-circle">
+        <div className="circle-border"></div>
+        <img src={loader} alt="Ketchup Loader" className="ketchup-img" />
+      </div>
     </div>
   );
 }

@@ -14,33 +14,68 @@
   font-size: 2.5rem;
 }
 
-.dish-card {
+.product-card {
   border-radius: 10px;
   transition: transform 0.3s ease;
   cursor: pointer;
   background: #f9f9f9;
+  position: relative;
+  overflow: hidden;
 }
 
-.dish-card:hover {
+.product-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(230, 0, 0, 0.3);
 }
 
-.card-img-top {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  height: 220px;
-  object-fit: cover;
+.product-img-container {
+  position: relative;
 }
 
-.badge-sale {
-  top: 15px;
-  left: 15px;
+.product-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.product-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  color: #e60000;
+}
+
+.badge-top {
+  position: absolute;
+  top: 10px;
+  left: 10px;
   font-size: 0.8rem;
   padding: 0.35em 0.7em;
   font-weight: 700;
   border-radius: 25px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.product-info {
+  padding: 10px;
 }
 
 .price {

@@ -1,15 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../Redux/Slice/roote"; // ✅ Redux selector
 import gsap from "gsap";
 import "./header.css";
-import logo from '../../img/Rudraalogo.png'
+import logo from '../../img/Rudraalogo.png';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
   const headerRef = useRef(null);
   const lastScrollY = useRef(0);
+
+  // Get cart items from Redux
+  const cartItems = useSelector(selectCartItems);
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   // GSAP animation for sidebar
   useEffect(() => {
@@ -63,10 +69,7 @@ function Header() {
         <div className="header">
           {/* Logo */}
           <Link to="/" className="logo">
-            <img
-              src={logo}
-              alt="logo"
-            />
+            <img src={logo} alt="logo" />
           </Link>
 
           {/* Nav Links */}
@@ -82,7 +85,7 @@ function Header() {
           <div className="right-section">
             <Link to="/cart" className="cart">
               <FaShoppingCart />
-              <span className="badge">3</span>
+              {cartCount > 0 && <span className="badge">{cartCount}</span>}
             </Link>
             <div className="hamburger" onClick={() => setMenuOpen(true)}>
               <FaBars />
@@ -98,16 +101,12 @@ function Header() {
         </div>
 
         <Link to="/" className="logo">
-          <img
-            src={logo}
-            alt="logo"
-          />
-          
+          <img src={logo} alt="logo" />
         </Link>
 
         <Link to="/cart" className="cart">
           <FaShoppingCart />
-          <span className="badge">3</span>
+          {cartCount > 0 && <span className="badge">{cartCount}</span>}
         </Link>
       </div>
 
@@ -118,8 +117,8 @@ function Header() {
         </div>
         <ul className="sidebar-menu">
           <li><NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
-          <li><NavLink to="/pages" onClick={() => setMenuOpen(false)}>Pages</NavLink></li>
           <li><NavLink to="/product" onClick={() => setMenuOpen(false)}>Product</NavLink></li>
+          <li><NavLink to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink></li>
           <li><NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink></li>
           <li><NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink></li>
         </ul>

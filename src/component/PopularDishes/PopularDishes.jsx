@@ -1,37 +1,33 @@
 import React, { useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { selectDishes } from "../../Redux/Slice/roote";
+import { useSelector, useDispatch } from "react-redux";
+import { selectDishes, addToCart } from "../../Redux/Slice/roote";
+import { FaHeart, FaEye, FaShoppingCart } from "react-icons/fa";
+import VanillaTilt from "vanilla-tilt";
 import "./PopularDishes.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function PopularDishes() {
-  const containerRef = useRef(null);
+  const dispatch = useDispatch();
   const dishes = useSelector(selectDishes);
+  const tiltRefs = useRef([]);
 
   useEffect(() => {
-    const elements = containerRef.current.querySelectorAll(".dish-card");
-    elements.forEach((el, i) => {
-      gsap.fromTo(
-        el,
-        { autoAlpha: 0, y: 50 },
-        {
-          duration: 1,
-          autoAlpha: 1,
-          y: 0,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-          delay: i * 0.2,
-        }
-      );
+    tiltRefs.current.forEach((card) => {
+      if (card) {
+        VanillaTilt.init(card, {
+          max: 25,
+          perspective: 800,
+          scale: 1.05,
+          speed: 500,
+          glare: true,
+          "max-glare": 0.3,
+          easing: "cubic-bezier(.03,.98,.52,.99)",
+        });
+      }
     });
-  }, [dishes]); // run effect on dishes change
+
+    return () =>
+      tiltRefs.current.forEach((el) => el && el.vanillaTilt?.destroy());
+  }, [dishes]);
 
   return (
     <section className="popular-dishes py-5">
@@ -39,29 +35,45 @@ export default function PopularDishes() {
         <p className="badge-text text-danger mb-2">BEST DEAL</p>
         <h2 className="section-title mb-5">Our Popular Dishes</h2>
 
-        <div className="row" ref={containerRef}>
-          {dishes.map(({ id, name, category, price, oldPrice, badge, image }) => (
-            <div key={id} className="col-md-3 mb-4">
-              <div className="card dish-card shadow-sm border-0">
-                <div className="position-relative">
-                  <img src={image} alt={name} className="card-img-top" />
-                  {badge && (
-                    <span className="badge bg-danger position-absolute badge-sale">
-                      {badge}
-                    </span>
-                  )}
+        <div className="row g-4 justify-content-center">
+          {dishes.map(({ id, name, category, price, oldPrice, badge, image }, index) => (
+            <div key={id} className="col-6 col-md-4 col-lg-3">
+              <div
+                className="product-card shadow-sm"
+                ref={(el) => (tiltRefs.current[index] = el)}
+              >
+                <div className="product-img-container">
+                  <img src={image} alt={name} className="product-img" />
+                  <div className="product-overlay">
+                    <button className="icon-btn" aria-label="Add to favorites">
+                      <FaHeart />
+                    </button>
+                    <button className="icon-btn" aria-label="View product">
+                      <FaEye />
+                    </button>
+                  </div>
+                  {badge && <span className="badge bg-danger badge-top">{badge}</span>}
                 </div>
-                <div className="card-body">
-                  <small className="text-muted text-uppercase">{category}</small>
-                  <h5 className="card-title mt-2">{name}</h5>
+
+                <div className="product-info text-center mt-3">
+                  <small className="text-uppercase text-muted">{category}</small>
+                  <h5 className="mt-1 fw-semibold">{name}</h5>
                   <p className="price">
                     {oldPrice && (
-                      <del className="text-muted me-2" style={{ fontSize: "0.9rem" }}>
-                        {oldPrice}
-                      </del>
+                      <span className="text-decoration-line-through text-muted me-2">
+                        {typeof oldPrice === "number" ? `$${oldPrice.toFixed(2)}` : oldPrice}
+                      </span>
                     )}
-                    <span className="text-danger fw-bold">{price}</span>
+                    <span className="text-danger fw-bold">
+                      {typeof price === "number" ? `$${price.toFixed(2)}` : price}
+                    </span>
                   </p>
+                  <button
+                    className="btn btn-outline-dark btn-sm rounded-pill px-3"
+                    onClick={() => dispatch(addToCart({ id, name, price }))}
+                  >
+                    <FaShoppingCart className="me-2" /> Add to Cart
+                  </button>
                 </div>
               </div>
             </div>

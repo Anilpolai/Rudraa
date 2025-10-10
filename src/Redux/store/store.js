@@ -4,6 +4,7 @@ import {
   productsReducer,
   teamReducer,
   reviewReducer,
+  cartReducer,
 } from "../Slice/roote";
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     products: productsReducer,
     team: teamReducer,
     reviews: reviewReducer,
+    cart: cartReducer,
   },
 });
 export default store; 

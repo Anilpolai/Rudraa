@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./KetchupOffer.css";
-import ketchupImg from "../../img/ketchup/ketchup2.jpeg"; // your ketchup image
-import bgImg from "../../img/back6.jpg"; // your red textured background
+import ketchupImg from "../../img/ketchup/ketchup2.jpeg"; // ketchup image
+import bgImg from "../../img/back6.jpg"; // textured background
 
 export default function KetchupOffer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -13,7 +13,7 @@ export default function KetchupOffer() {
 
   useEffect(() => {
     const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 3); // 3-day promo countdown
+    endDate.setDate(endDate.getDate() + 3); // 3-day countdown
 
     const timer = setInterval(() => {
       const now = new Date();
@@ -21,6 +21,7 @@ export default function KetchupOffer() {
 
       if (diff <= 0) {
         clearInterval(timer);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         setTimeLeft({
           days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -52,30 +53,20 @@ export default function KetchupOffer() {
           </p>
 
           <div className="timer">
-            <div className="timer-box">
-              <h3>{timeLeft.days.toString().padStart(2, "0")}</h3>
-              <p>DAYS</p>
-            </div>
-            <div className="timer-box">
-              <h3>{timeLeft.hours.toString().padStart(2, "0")}</h3>
-              <p>HOURS</p>
-            </div>
-            <div className="timer-box">
-              <h3>{timeLeft.minutes.toString().padStart(2, "0")}</h3>
-              <p>MINUTES</p>
-            </div>
-            <div className="timer-box">
-              <h3>{timeLeft.seconds.toString().padStart(2, "0")}</h3>
-              <p>SECONDS</p>
-            </div>
+            {["days", "hours", "minutes", "seconds"].map((unit) => (
+              <div key={unit} className="timer-box">
+                <h3>{timeLeft[unit].toString().padStart(2, "0")}</h3>
+                <p>{unit.toUpperCase()}</p>
+              </div>
+            ))}
           </div>
 
           <button className="buy-btn">Buy Now</button>
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="ketchup-right">
-          <img src={ketchupImg} alt="Premium Tomato Ketchup" className="ketchup-img" />
+        <div className="ketchup-right1">
+          <img src={ketchupImg} alt="Premium Ketchup" className="ketchup-img1" />
           <div className="discount-circle">
             <p>UP TO</p>
             <h2>30%</h2>

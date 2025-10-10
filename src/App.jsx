@@ -7,7 +7,7 @@ import Blog from "./pages/blog";
 import Product from "./pages/product";
 import About from "./pages/about";
 import Contact from "./pages/contact";
-// import Cart from "./pages/cart";
+import Cart from './component/cart/CartPage'
 import Endlayout from "./component/endlayout/endlayout";
 import Loader from "./component/loader/Loader";
 
@@ -34,7 +34,7 @@ function App() {
         <Route path="product" element={<Product />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
-        {/* <Route path="cart" element={<Cart />} /> */}
+        <Route path="cart" element={<Cart />} />
       </Route>
     </Routes>
   );
