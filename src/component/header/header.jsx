@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { FaHeart, FaShoppingCart, FaBars, FaTimes } from "react-icons/fa";
+import { selectCartItems, selectWishlistItems } from "../../Redux/Slice/roote"; // ✅
 import { useSelector } from "react-redux";
-import { selectCartItems } from "../../Redux/Slice/roote"; // ✅ Redux selector
 import gsap from "gsap";
 import "./header.css";
 import logo from '../../img/Rudraalogo.png';
@@ -12,6 +12,10 @@ function Header() {
   const sidebarRef = useRef(null);
   const headerRef = useRef(null);
   const lastScrollY = useRef(0);
+  // Get wishlist items from Redux
+  const wishlistItems = useSelector(selectWishlistItems);
+  const wishlistCount = wishlistItems.length; // or use quantity if needed
+
 
   // Get cart items from Redux
   const cartItems = useSelector(selectCartItems);
@@ -83,10 +87,18 @@ function Header() {
 
           {/* Cart + Menu */}
           <div className="right-section">
+            {/* Wishlist */}
+            <Link to="/wishlist" className="wishlist">
+              <FaHeart />
+              {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
+            </Link>
+
+            {/* Cart */}
             <Link to="/cart" className="cart">
               <FaShoppingCart />
               {cartCount > 0 && <span className="badge">{cartCount}</span>}
             </Link>
+
             <div className="hamburger" onClick={() => setMenuOpen(true)}>
               <FaBars />
             </div>
@@ -104,10 +116,17 @@ function Header() {
           <img src={logo} alt="logo" />
         </Link>
 
-        <Link to="/cart" className="cart">
-          <FaShoppingCart />
-          {cartCount > 0 && <span className="badge">{cartCount}</span>}
-        </Link>
+        <div className="mobile-icons">
+          <Link to="/wishlist" className="wishlist">
+            <FaHeart />
+            {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
+          </Link>
+
+          <Link to="/cart" className="cart">
+            <FaShoppingCart />
+            {cartCount > 0 && <span className="badge">{cartCount}</span>}
+          </Link>
+        </div>
       </div>
 
       {/* ================= Sidebar Menu ================= */}

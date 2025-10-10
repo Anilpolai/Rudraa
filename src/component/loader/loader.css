@@ -41,6 +41,13 @@
   object-fit: contain;
   animation: bounce 1.5s infinite ease-in-out;
   z-index: 2;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Ketchup exit animation */
+.ketchup-exit {
+  transform: translateY(-200px) scale(1.2) rotate(20deg);
+  opacity: 0;
 }
 
 /* Bounce Animation */

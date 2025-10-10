@@ -246,6 +246,45 @@
   z-index: 2500;
 }
 
+
+/* Wishlist icon */
+.wishlist {
+  position: relative;
+  font-size: 18px;
+  background: #032323;
+  color: #fff;
+  padding: 9px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  transition: background 0.3s ease;
+}
+
+.wishlist:hover {
+  background: #044646;
+}
+
+.wishlist .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Mobile icons container */
+.mobile-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
 /* =====================================
    RESPONSIVE BREAKPOINTS
 ===================================== */

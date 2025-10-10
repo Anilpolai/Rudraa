@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, selectCartItems } from "../../Redux/Slice/roote";
 import "./CartPage.css";
+import PageHeader from "../PageHeader/PageHeader";
 
 export default function CartPage() {
   const cartItems = useSelector(selectCartItems);
@@ -14,6 +15,8 @@ export default function CartPage() {
   );
 
   return (
+    <>
+    <PageHeader title="My Cart" breadcrumb="Cart" />
     <div className="cart-page container py-5">
       <h2 className="mb-4">Your Cart</h2>
       {cartItems.length === 0 ? (
@@ -54,5 +57,6 @@ export default function CartPage() {
         </>
       )}
     </div>
+    </>
   );
 }

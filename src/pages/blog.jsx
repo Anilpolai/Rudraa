@@ -1,8 +1,11 @@
 import React from 'react'
+import PageHeader from '../component/PageHeader/PageHeader'
 
 const blog = () => {
   return (
-    <div>blog</div>
+    <>
+    <PageHeader title="Blog Standard" breadcrumb="Blog" />
+    </>
   )
 }
 

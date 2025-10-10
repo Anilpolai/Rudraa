@@ -19,7 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductGrid() {
   const dispatch = useDispatch();
- const products = useSelector(selectDishes) || [];
+  const products = useSelector(selectDishes) || [];
   const wishlist = useSelector(selectWishlistItems) || [];
   const tiltRefs = useRef([]);
   const navigate = useNavigate();
@@ -106,7 +106,10 @@ export default function ProductGrid() {
                 style={{ cursor: "pointer" }}
               >
                 <div className="product-img-container">
-                  <img src={image} alt={name} className="product-img" />
+                  <img
+                    src={Array.isArray(image) ? image[0] : image}
+                    alt={name}
+                    className="product-img"/>
                   <div className="product-overlay">
                     <button
                       className="icon-btn"

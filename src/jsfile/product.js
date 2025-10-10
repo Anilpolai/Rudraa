@@ -12,7 +12,7 @@ const product = {
       price: 4.5,
       oldPrice: 5.0,
       badge: "Best Seller",
-      image: k1,
+      image: [k1, k2, k3, k4],
       description:
         "Crafted from the finest sun-ripened tomatoes, this ketchup delivers a perfectly balanced tangy and sweet flavor ideal for all meals.",
     },
@@ -22,7 +22,7 @@ const product = {
       category: "Natural, Eco-Friendly",
       price: 5.5,
       badge: "100% Organic",
-      image: k2,
+      image: [k2, k3, k4, k1],
       description:
         "Made from certified organic tomatoes with no artificial additives. Ideal for health-conscious consumers and organic retailers.",
     },
@@ -32,7 +32,7 @@ const product = {
       category: "Hot, Fiery Flavor",
       price: 4.99,
       badge: "Hot!",
-      image: k3,
+      image: [k3, k4, k1, k2],
       description:
         "A bold blend of fresh chili peppers and premium tomato puree for those who love a little heat in every bite.",
     },
