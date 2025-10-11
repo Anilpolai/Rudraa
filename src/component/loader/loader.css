@@ -30,7 +30,7 @@
   border-top-color: #ffcc00;
   border-radius: 50%;
   box-shadow: 0 0 40px #ff2020, 0 0 80px #ffcc00;
-  animation: rotate 3s linear infinite;
+  animation: rotate 0.3s linear infinite;
   background: radial-gradient(circle at center, #b22222, #8b0000);
 }
 
