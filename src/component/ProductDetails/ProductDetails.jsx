@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 import {
   selectDishes,
   addToCart,
@@ -14,6 +16,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./ProductDetails.css";
 import PageHeader from "../PageHeader/PageHeader";
+import RelatedProducts from "./RelatedProducts";
+import ProductViewCounter from "./ProductViewCounter";
+import ShippingInfo from "./ShippingInfo";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -32,7 +37,7 @@ export default function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="container py-5">
+      <div className="not-found">
         <h2>Product not found!</h2>
       </div>
     );
@@ -40,38 +45,52 @@ export default function ProductDetails() {
 
   const handleAddToCart = () => {
     dispatch(
-      addToCart({ id: product.id, name: product.name, price: product.price, quantity })
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity,
+      })
     );
-    toast.success(`${product.name} added to cart!`, { position: "top-right", autoClose: 2000 });
+    toast.success(`${product.name} added to cart! 🛒`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
   const handleWishlist = () => {
     if (isWishlisted) {
       dispatch(removeFromWishlist(product.id));
-      toast.info(`${product.name} removed from wishlist 💔`, { autoClose: 1500 });
+      toast.info(`${product.name} removed from wishlist 💔`, {
+        autoClose: 1500,
+      });
     } else {
       dispatch(addToWishlist(product));
-      toast.success(`${product.name} added to wishlist ❤️`, { autoClose: 1500 });
+      toast.success(`${product.name} added to wishlist ❤️`, {
+        autoClose: 1500,
+      });
     }
   };
 
   return (
     <>
       <PageHeader title="Product Details" breadcrumb="Details" />
-
       <div className="product-details-container">
+        {/* LEFT IMAGE SECTION */}
         <div className="left-image">
-          {/* Main image */}
-          <img src={mainImage} alt={product.name} />
+          <img src={mainImage} alt={product.name} className="main-img" />
 
-          {/* Carousel for multiple images */}
           {Array.isArray(product.image) && product.image.length > 1 && (
             <OwlCarousel
-              className="owl-theme"
-              items={4}
+              className="owl-theme thumbnails-carousel"
+              items={5}
               margin={10}
               nav
               dots={false}
+              loop={true}
+              autoplay={true}
+              autoplayTimeout={3000}
+              autoplayHoverPause={true}
               responsive={{
                 0: { items: 2 },
                 600: { items: 3 },
@@ -83,18 +102,17 @@ export default function ProductDetails() {
                   key={index}
                   src={img}
                   alt={`thumb-${index}`}
-                  className="thumbnail-img"
+                  className={`thumbnail-img ${
+                    mainImage === img ? "active" : ""
+                  }`}
                   onClick={() => setMainImage(img)}
-                  style={{
-                    cursor: "pointer",
-                    border: mainImage === img ? "2px solid #ff0033" : "none",
-                  }}
                 />
               ))}
             </OwlCarousel>
           )}
         </div>
 
+        {/* RIGHT INFO SECTION */}
         <div className="right-info">
           <h2 className="product-name">{product.name}</h2>
           <p className="product-category">{product.category}</p>
@@ -108,9 +126,13 @@ export default function ProductDetails() {
           </div>
 
           <div className="quantity-selector">
-            <button onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}>-</button>
+            <button
+              onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
+            >
+              -
+            </button>
             <span>{quantity}</span>
-            <button onClick={() => setQuantity(quantity + 1)}>+</button>
+            <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
           </div>
 
           <div className="cart-wishlist-row">
@@ -125,10 +147,16 @@ export default function ProductDetails() {
               <FaHeart />
             </button>
           </div>
+
+          {/* Live viewers */}
+          <ProductViewCounter min={10} max={100} interval={3000} />
+          {/* Shipping info */}
+          <ShippingInfo days={2} />
         </div>
 
         <ToastContainer />
       </div>
+      <RelatedProducts currentProductId={product.id} />
     </>
   );
 }
