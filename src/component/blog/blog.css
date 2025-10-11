@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');  
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.blog-card {
+    width: 100%;
+    max-width: 955px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.5s ease-out;
+    background-color: #fff;
+}
+
+.blog-card:hover {
+    box-shadow: 0 20px 30px rgba(235, 0, 41, 0.5);
+}
+
+.blog-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: 0.5s ease-in;
+}
+
+.blog-content {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 30px;
+    font-family: 'Oswald', sans-serif;
+    gap: 15px;
+}
+
+.blog-meta {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 10px;
+    color: #666666;
+}
+
+.blog-meta svg {
+    color: #e63946;
+    margin-right: 5px;
+}
+
+.b-paragraph {
+    line-height: 1.6;
+    font-size: 16px;
+    font-family: 'Jost', sans-serif;
+    color: #666666;
+}
+
+.b-h2 {
+    font-size: 28px;
+    color: #04000b;
+    transition: 0.5s ease;
+}
+
+.b-h2:hover {
+    color: #eb0029;
+}
+
+.learnmore-btn {
+    background-color: #eb0029;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 28px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s ease;
+    align-self: flex-start;
+}
+
+.learnmore-btn:hover {
+    background-color: #072b31; 
+    color: #eb0029;
+    transform: translateX(5px);
+}
+
+/* Responsive Breakpoints */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .b-h2 {
+        font-size: 26px;
+    }
+    .b-paragraph {
+        font-size: 15px;
+    }
+    .blog-content {
+        padding: 20px;
+    }
+}
+
+/* Small tablets / large phones */
+@media (max-width: 768px) {
+    .blog-card {
+        max-width: 90%;
+    }
+    .b-h2 {
+        font-size: 24px;
+    }
+    .b-paragraph {
+        font-size: 14px;
+    }
+    .learnmore-btn {
+        padding: 10px 24px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .blog-card {
+        max-width: 100%;
+    }
+    .blog-content {
+        padding: 15px;
+        gap: 10px;
+    }
+    .b-h2 {
+        font-size: 20px;
+    }
+    .b-paragraph {
+        font-size: 13px;
+    }
+    .learnmore-btn {
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+}
