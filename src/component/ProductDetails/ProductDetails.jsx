@@ -25,6 +25,7 @@ export default function ProductDetails() {
   const dispatch = useDispatch();
   const products = useSelector(selectDishes);
   const wishlist = useSelector(selectWishlistItems);
+
   const productId = Number(id);
   const product = products.find((p) => p.id === productId);
 
@@ -62,11 +63,13 @@ export default function ProductDetails() {
     if (isWishlisted) {
       dispatch(removeFromWishlist(product.id));
       toast.info(`${product.name} removed from wishlist 💔`, {
+        position: "top-right",
         autoClose: 1500,
       });
     } else {
       dispatch(addToWishlist(product));
       toast.success(`${product.name} added to wishlist ❤️`, {
+        position: "top-right",
         autoClose: 1500,
       });
     }
@@ -75,6 +78,7 @@ export default function ProductDetails() {
   return (
     <>
       <PageHeader title="Product Details" breadcrumb="Details" />
+
       <div className="product-details-container">
         {/* LEFT IMAGE SECTION */}
         <div className="left-image">
@@ -87,10 +91,10 @@ export default function ProductDetails() {
               margin={10}
               nav
               dots={false}
-              loop={true}
-              autoplay={true}
+              loop
+              autoplay
               autoplayTimeout={3000}
-              autoplayHoverPause={true}
+              autoplayHoverPause
               responsive={{
                 0: { items: 2 },
                 600: { items: 3 },
@@ -127,12 +131,18 @@ export default function ProductDetails() {
 
           <div className="quantity-selector">
             <button
-              onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : 1))}
+              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+              aria-label="Decrease quantity"
             >
-              -
+              −
             </button>
             <span>{quantity}</span>
-            <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
+            <button
+              onClick={() => setQuantity((prev) => prev + 1)}
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
           </div>
 
           <div className="cart-wishlist-row">
@@ -143,6 +153,7 @@ export default function ProductDetails() {
             <button
               className={`wishlist-icon ${isWishlisted ? "active" : ""}`}
               onClick={handleWishlist}
+              aria-label="Toggle Wishlist"
             >
               <FaHeart />
             </button>
@@ -150,13 +161,15 @@ export default function ProductDetails() {
 
           {/* Live viewers */}
           <ProductViewCounter min={10} max={100} interval={3000} />
+
           {/* Shipping info */}
-          <ShippingInfo days={2} />
+          {/* <ShippingInfo days={2} /> */}
         </div>
 
         <ToastContainer />
       </div>
-      <RelatedProducts currentProductId={product.id} />
+
+      {/* <RelatedProducts currentProductId={product.id} /> */}
     </>
   );
 }

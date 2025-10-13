@@ -59,21 +59,22 @@ export default function RelatedProductsCarousel() {
     return () => tiltRefs.current.forEach((el) => el?.vanillaTilt?.destroy());
   }, [products]);
 
-  const carouselOptions = {
-    loop: true,
-    margin: 20,
-    nav: true,
-    dots: false,
-    autoplay: true,
-    autoplayTimeout: 3000,
-    autoplayHoverPause: true,
-    responsive: {
-      0: { items: 1 },
-      576: { items: 2 },
-      768: { items: 3 },
-      992: { items: 4 },
-    },
-  };
+ const carouselOptions = {
+  loop: true,
+  margin: 20,
+  nav: true,
+  dots: false,
+  autoplay: true,
+  autoplayTimeout: 3000,
+  autoplayHoverPause: true,
+  responsive: {
+    0: { items: 2 },       // ✅ 2 products per slide on mobile
+    576: { items: 2 },
+    768: { items: 3 },
+    992: { items: 4 },
+    1200: { items: 5 },
+  },
+};
 
   return (
   <div className="related-products-carousel py-5">
