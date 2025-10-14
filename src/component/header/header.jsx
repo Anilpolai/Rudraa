@@ -80,7 +80,7 @@ function Header() {
           <ul className="nav">
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/product">Product</NavLink></li>
-            <li><NavLink to="/blog">Blog</NavLink></li>
+            {/* <li><NavLink to="/blog">Blog</NavLink></li> */}
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
@@ -137,7 +137,7 @@ function Header() {
         <ul className="sidebar-menu">
           <li><NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
           <li><NavLink to="/product" onClick={() => setMenuOpen(false)}>Product</NavLink></li>
-          <li><NavLink to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink></li>
+          {/* <li><NavLink to="/blog" onClick={() => setMenuOpen(false)}>Blog</NavLink></li> */}
           <li><NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink></li>
           <li><NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink></li>
         </ul>

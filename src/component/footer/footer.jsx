@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import logo  from '../../img/Rudraalogo.png'
+import logo from "../../img/Rudraalogo.png";
+import { NavLink } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,13 +13,14 @@ import { gsap } from "gsap";
 import "./footer.css";
 
 const Footer = () => {
-  const iconRefs = useRef([]); // ✅ store icon refs
+  const socialRefs = useRef([]);
 
   useEffect(() => {
-    // GSAP Animation: icons pop up with bounce
-    gsap.from(iconRefs.current, {
+    // GSAP animation for social icons
+    gsap.from(socialRefs.current, {
       opacity: 0,
       scale: 0,
+      rotation: -360,
       y: 30,
       stagger: 0.2,
       ease: "back.out(1.7)",
@@ -33,10 +35,11 @@ const Footer = () => {
           {/* Logo & Info */}
           <div className="footer-col">
             <div className="footer-logo">
-              <img src={logo} alt="Foodu Logo" className="footer-logo-img" />
+              <img src={logo} alt="Rudraa Foods Logo" className="footer-logo-img" />
             </div>
             <p className="footer-text">
-              Discover culinary delights, recipes and inspiration in our food haven.
+              Discover authentic flavors, quality ingredients, and the taste of
+              tradition with Rudraa Foods.
             </p>
             <div className="footer-hours">
               <p>
@@ -52,12 +55,20 @@ const Footer = () => {
           <div className="footer-col">
             <h5 className="footer-title">Explore</h5>
             <ul className="footer-links">
-              <li>Company Profile</li>
-              <li>About</li>
-              <li>Help Center</li>
-              <li>Career</li>
-              <li>Features</li>
-              <li>Contact</li>
+              <li>
+                <NavLink to="/" end>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/product">Product</NavLink>
+              </li>
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
             </ul>
           </div>
 
@@ -66,13 +77,14 @@ const Footer = () => {
             <h5 className="footer-title">Contact Info</h5>
             <ul className="footer-contact">
               <li>
-                <FaMapMarkerAlt /> 175 10h Street, Office 375 Berlin, De 21562
+                <FaMapMarkerAlt /> Plot No. 36-37, Sai Shraddha Industrial Estate,
+                Near Masama Road, Olpad, Surat - 394540
               </li>
               <li>
-                <FaPhoneAlt /> +123 34598768 / +554 34598734
+                <FaPhoneAlt /> +91 9601481587
               </li>
               <li>
-                <FaEnvelope /> food@restan.com
+                <FaEnvelope /> co-founder@rudraafoods.com
               </li>
             </ul>
           </div>
@@ -81,7 +93,8 @@ const Footer = () => {
           <div className="footer-col">
             <h5 className="footer-title">Newsletter</h5>
             <p>
-              Join our subscribers list to get the latest news and special offers.
+              Join our subscribers list to get the latest news and special
+              offers.
             </p>
             <div className="newsletter-box">
               <input
@@ -91,22 +104,17 @@ const Footer = () => {
               />
               <button className="footer-btn">Subscribe →</button>
             </div>
+
+            {/* Social Media */}
             <div className="footer-social">
-              <span>Social Media:</span>
+              <span>Follow Us:</span>
               <div className="social-icons">
-                {[
-                  { icon: FaFacebookF, link: "#" },
-                  { icon: FaInstagram, link: "#" },
-                  { icon: FaLinkedinIn, link: "#" },
-                ].map(({ icon: Icon, link }, i) => (
-                  <a
-                    href={link}
-                    key={i}
-                    ref={(el) => (iconRefs.current[i] = el)}
+                {[FaFacebookF, FaInstagram, FaLinkedinIn].map((Icon, index) => (
+                  <Icon
+                    key={index}
+                    ref={(el) => (socialRefs.current[index] = el)}
                     className="social-icon"
-                  >
-                    <Icon /> {/* ✅ Correct JSX for rendering */}
-                  </a>
+                  />
                 ))}
               </div>
             </div>
@@ -114,7 +122,7 @@ const Footer = () => {
         </div>
 
         <p className="footer-bottom">
-          © Copyright 2025 <strong>Foodu</strong>. All Rights Reserved
+          © 2025 <strong>Rudraa Foods</strong>. All Rights Reserved
         </p>
       </div>
     </footer>

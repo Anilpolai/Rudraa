@@ -21,7 +21,7 @@ function Location() {
             </div>
             <div className="indisc">
               <h4>Hotline</h4>
-              <p>+47 333 78901</p>
+              <p>+91 9601481587</p>
             </div>
           </div>
 
@@ -32,7 +32,7 @@ function Location() {
             </div>
             <div className="indisc">
               <h4>Our Location</h4>
-              <p>55 Main Street, The Grand Avenue 2nd Block, New York City</p>
+              <p>Plot no.36.37  sai shraddha industrial estate, near masama road,olpad,surat 394107</p>
             </div>
           </div>
 
@@ -43,7 +43,7 @@ function Location() {
             </div>
             <div className="indisc">
               <h4>Official Email</h4>
-              <p>info@gixus.com</p>
+              <p>co-founder@rudraafoods.com</p>
             </div>
           </div>
         </div>
