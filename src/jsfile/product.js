@@ -12,6 +12,7 @@ const product = {
       price: 4.5,
       oldPrice: 5.0,
       badge: "Best Seller",
+      weight: "500g",
       image: [k1, k2, k3, k4],
       description:
         "Crafted from the finest sun-ripened tomatoes, this ketchup delivers a perfectly balanced tangy and sweet flavor ideal for all meals.",
@@ -21,7 +22,9 @@ const product = {
       name: "Organic Ketchup",
       category: "Natural, Eco-Friendly",
       price: 5.5,
+      oldPrice: null,
       badge: "100% Organic",
+      weight: "500g",
       image: [k2, k3, k4, k1],
       description:
         "Made from certified organic tomatoes with no artificial additives. Ideal for health-conscious consumers and organic retailers.",
@@ -31,7 +34,9 @@ const product = {
       name: "Spicy Chili Ketchup",
       category: "Hot, Fiery Flavor",
       price: 4.99,
+      oldPrice: null,
       badge: "Hot!",
+      weight: "500g",
       image: [k3, k4, k1, k2],
       description:
         "A bold blend of fresh chili peppers and premium tomato puree for those who love a little heat in every bite.",
@@ -43,7 +48,8 @@ const product = {
       price: 4.2,
       oldPrice: 4.8,
       badge: "Healthy Choice",
-      image: k4,
+      weight: "500g",
+      image: [k4],
       description:
         "Delicious tomato ketchup with zero added sugar — perfect for diabetics and fitness enthusiasts who value natural sweetness.",
     },
@@ -54,7 +60,8 @@ const product = {
       price: 4.5,
       oldPrice: 5.0,
       badge: "Best Seller",
-      image: k1,
+      weight: "1kg",
+      image: [k1],
       description:
         "Crafted from the finest sun-ripened tomatoes, this ketchup delivers a perfectly balanced tangy and sweet flavor ideal for all meals.",
     },
@@ -63,8 +70,10 @@ const product = {
       name: "Organic Ketchup",
       category: "Natural, Eco-Friendly",
       price: 5.5,
+      oldPrice: null,
       badge: "100% Organic",
-      image: k2,
+      weight: "1kg",
+      image: [k2],
       description:
         "Made from certified organic tomatoes with no artificial additives. Ideal for health-conscious consumers and organic retailers.",
     },
@@ -73,8 +82,10 @@ const product = {
       name: "Spicy Chili Ketchup",
       category: "Hot, Fiery Flavor",
       price: 4.99,
+      oldPrice: null,
       badge: "Hot!",
-      image: k3,
+      weight: "1kg",
+      image: [k3],
       description:
         "A bold blend of fresh chili peppers and premium tomato puree for those who love a little heat in every bite.",
     },
@@ -85,7 +96,8 @@ const product = {
       price: 4.2,
       oldPrice: 4.8,
       badge: "Healthy Choice",
-      image: k4,
+      weight: "1kg",
+      image: [k4],
       description:
         "Delicious tomato ketchup with zero added sugar — perfect for diabetics and fitness enthusiasts who value natural sweetness.",
     },

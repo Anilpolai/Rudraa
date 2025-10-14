@@ -21,7 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 import PageHeader from "../PageHeader/PageHeader";
 import RelatedProductsCarousel from "./RelatedProducts";
 import ProductViewCounter from "./ProductViewCounter";
-import "./productDetails.css";
+import "./ProductDetails.css";
 
 export default function ProductDetails() {
   const { id } = useParams();
