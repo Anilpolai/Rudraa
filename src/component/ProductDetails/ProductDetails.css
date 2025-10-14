@@ -1,42 +1,38 @@
-/* ==== Base Layout ==== */
-.product-details-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 60px;
-  max-width: 1330px;
-  margin: 60px auto;
-  padding: 0 20px;
-  font-family: "Poppins", sans-serif;
-  align-items: flex-start;
+/* ======================================
+   🌟 Product Details Page Styling
+====================================== */
+
+.product-details-page {
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-/* ==== Left Section ==== */
-.left-image {
-  flex: 1;
-  min-width: 350px;
-  text-align: center;
+/* === Image Section === */
+.main-img-container {
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
 }
 
 .main-img {
-  max-width: 100%;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .main-img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
 }
 
-/* Thumbnails Carousel */
-.thumbnails-carousel {
-  margin-top: 30px;
+/* === Thumbnails === */
+.thumbs {
+  gap: 10px;
 }
 
-.thumbnail-img {
-  width: 100px;
-  height: 100px;
+.thumb-img {
+  width: 75px;
+  height: 75px;
   object-fit: cover;
   border-radius: 12px;
   cursor: pointer;
@@ -44,260 +40,362 @@
   transition: all 0.3s ease;
 }
 
-.thumbnail-img:hover {
-  transform: scale(1.07);
-  border-color: #ff0033;
+.thumb-img:hover {
+  border-color: #c62828;
+  transform: scale(1.08);
 }
 
-.thumbnail-img.active {
-  border: 2px solid #ff0033;
-  box-shadow: 0 0 8px rgba(255, 0, 51, 0.4);
+/* === Product Info Section === */
+.product-info-section {
+  padding-top: 10px;
 }
 
-/* ==== Right Info ==== */
-.right-info {
-  flex: 1;
-  min-width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.product-name {
-  font-size: 2.2rem;
+.product-title {
+  font-size: 2rem;
   font-weight: 700;
-  color: #ff0033;
+  color: #222;
+  text-transform: capitalize;
 }
 
 .product-category {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  color: #888;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  color: #666;
+}
+
+.price-box {
+  display: flex;
+  align-items: center;
 }
 
 .product-description {
-  font-size: 1rem;
   line-height: 1.6;
   color: #444;
-  text-align: justify;
 }
 
-.product-price {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  color: #ff0033;
-  font-size: 1.6rem;
+/* ======================================
+   ❤️ Ketchup Theme Colors
+====================================== */
+.text-ketchup {
+  color: #c62828;
 }
 
-.old-price {
-  text-decoration: line-through;
-  color: #999;
-  font-size: 1.2rem;
-}
-
-/* ==== Quantity Selector ==== */
-.quantity-selector {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 1.2rem;
-}
-
-.quantity-selector button {
-  background: #ff0033;
-  color: #fff;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.quantity-selector button:hover {
-  background: #fff;
-  color: #ff0033;
-  border: 2px solid #ff0033;
-}
-
-/* ==== Add to Cart & Wishlist ==== */
-.cart-wishlist-row {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
+/* ======================================
+   🛒 Add to Cart Button — Red ➜ White Hover
+====================================== */
 .add-cart-btn {
-  background: #ff0033;
-  color: #fff;
-  border: none;
-  padding: 14px 32px;
-  border-radius: 8px;
+  background-color: #c62828 !important;
+  border: 2px solid #c62828 !important;
+  color: #fff !important;
+  height: 52px;
+  font-size: 1.05rem;
   font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
+  border-radius: 50px;
   transition: all 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .add-cart-btn:hover {
-  background: #fff;
-  color: #ff0033;
-  box-shadow: 0 6px 20px rgba(255, 0, 51, 0.3);
+  background-color: #fff !important;
+  color: #c62828 !important;
+  border-color: #c62828 !important;
+  box-shadow: 0 6px 20px rgba(198, 40, 40, 0.3);
+  transform: translateY(-2px);
 }
 
-/* ==== Wishlist Icon ==== */
-.wishlist-icon {
-  background: #fff;
-  color: #ff0033;
-  border: 2px solid #ff0033;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
+/* ======================================
+   ❤️ Wishlist Button — Active Glow + Gradient
+====================================== */
+
+/* Not Wishlisted */
+.btn-outline-ketchup {
+  background: transparent;
+  color: #c62828;
+  /* border: 2px solid #c62828; */
+  height: 52px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.35s ease;
+}
+
+.btn-outline-ketchup:hover {
+  background: #dd2e2e;
+  color: #fff;
+  /* box-shadow: 0 4px 15px rgba(198, 40, 40, 0.3); */
+  transform: translateY(-2px);
+}
+
+/* Wishlisted (Active State) */
+.btn-ketchup {
+  background: linear-gradient(135deg, #e53935);
+  color: #fff;
+  border: 2px solid #c62828;
+  height: 52px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(198, 40, 40, 0.4);
+  transition: all 0.35s ease;
+}
+
+/* .btn-ketchup:hover {
+  background: linear-gradient(135deg, #b71c1c, #d32f2f);
+  color: #fff;
+  box-shadow: 0 6px 25px rgba(183, 28, 28, 0.5);
+  transform: translateY(-2px);
+} */
+
+/* Subtle pulse when clicked */
+.btn-ketchup:active {
+  animation: pulseGlow 0.4s ease;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(198, 40, 40, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(198, 40, 40, 0);
+    transform: scale(0.97);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(198, 40, 40, 0);
+    transform: scale(1);
+  }
+}
+
+/* ======================================
+   🔢 Quantity Controls
+====================================== */
+.qty-section {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  cursor: pointer;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+}
+
+.qty-btn {
+  background: #fff;
+  border: 1.5px solid #c62828;
+  color: #c62828;
+  padding: 6px 10px;
+  border-radius: 8px;
   transition: all 0.3s ease;
 }
 
-.wishlist-icon:hover,
-.wishlist-icon.active {
-  background: #ff0033;
+.qty-btn:hover {
+  background: #c62828;
   color: #fff;
-  box-shadow: 0 0 12px rgba(255, 0, 51, 0.4);
 }
 
-/* ==== Not Found ==== */
-.not-found {
-  text-align: center;
-  padding: 100px 0;
-  font-size: 1.5rem;
-  color: #555;
+.qty-value {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 12px;
 }
 
-/* ===================================================== */
-/* =================== RESPONSIVE DESIGN ================ */
-/* ===================================================== */
-
-/* Large Tablets */
-@media (max-width: 1024px) {
-  .product-details-container {
-    gap: 40px;
+/* ======================================
+   🪄 Animation
+====================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  .product-name {
-    font-size: 1.8rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .product-price {
-    font-size: 1.4rem;
-  }
-
+/* ======================================
+   🧱 Responsive Design
+====================================== */
+@media (max-width: 992px) {
   .main-img {
-    border-radius: 16px;
+    height: 320px;
   }
 }
 
-/* Small Tablets / Landscape Phones */
 @media (max-width: 768px) {
-  .product-details-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .left-image {
-    order: 1;
-  }
-
-  .right-info {
-    order: 2;
-    align-items: center;
-  }
-
-  .quantity-selector {
-    justify-content: center;
-  }
-
-  .cart-wishlist-row {
-    justify-content: center;
-  }
-
-  .thumbnail-img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .product-name {
+  .product-title {
     font-size: 1.6rem;
   }
 
-  .product-description {
-    font-size: 0.95rem;
-  }
-}
-
-/* Mobile Phones */
-@media (max-width: 480px) {
-  .product-details-container {
-    padding: 0 10px;
-    margin: 40px auto;
-  }
-
   .main-img {
-    border-radius: 12px;
+    height: 280px;
   }
 
-  .thumbnail-img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .product-name {
-    font-size: 1.4rem;
-  }
-
-  .product-description {
-    font-size: 0.9rem;
-  }
-
-  .product-price {
-    font-size: 1.3rem;
-  }
-
-  .add-cart-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .wishlist-icon {
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
-  }
-}
-
-/* Extra Small (very small devices) */
-@media (max-width: 360px) {
-  .thumbnail-img {
+  .thumb-img {
     width: 60px;
     height: 60px;
   }
 
-  .product-name {
-    font-size: 1.2rem;
+  .add-cart-btn,
+  .btn-outline-ketchup,
+  .btn-ketchup {
+    height: 48px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-title {
+    font-size: 1.4rem;
   }
 
-  .add-cart-btn {
-    padding: 8px 16px;
+  .main-img {
+    height: 250px;
+  }
+
+  .thumb-img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .qty-btn {
+    padding: 5px 8px;
+  }
+
+  .qty-value {
+    font-size: 1rem;
+  }
+
+  .add-cart-btn,
+  .btn-outline-ketchup,
+  .btn-ketchup {
+    height: 45px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ======================================
+   🌟 Product Card Hover Effect (For Product List)
+====================================== */
+.product-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  perspective: 1000px;
+  will-change: transform;
+  min-height: 380px;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card::after {
+  content: "";
+  position: absolute;
+  top: -75%;
+  left: -75%;
+  width: 250%;
+  height: 250%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.25),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.product-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  border-radius: 20px 20px 0 0;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.1);
+}
+
+.product-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.4s ease;
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.icon-btn {
+  background: #fff;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  width: 38px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.icon-btn:hover {
+  background: #ff3c3c;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-info h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.btn-outline-dark:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Responsive Card */
+@media (max-width: 576px) {
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .product-info h5 {
+    font-size: 1rem;
+  }
+  .product-info {
+    padding: 10px;
+  }
+  .btn-outline-dark {
+    font-size: 0.85rem;
+    padding: 5px 10px;
   }
 }

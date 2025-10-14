@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
 import {
   selectDishes,
   addToCart,
@@ -11,38 +8,54 @@ import {
   removeFromWishlist,
   selectWishlistItems,
 } from "../../Redux/Slice/roote";
-import { FaShoppingCart, FaHeart } from "react-icons/fa";
-import { toast, ToastContainer } from "react-toastify";
+import {
+  FaHeart,
+  FaShoppingCart,
+  FaArrowLeft,
+  FaMinus,
+  FaPlus,
+} from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import { motion } from "framer-motion";
 import "react-toastify/dist/ReactToastify.css";
-import "./ProductDetails.css";
 import PageHeader from "../PageHeader/PageHeader";
-import RelatedProducts from "./RelatedProducts";
+import RelatedProductsCarousel from "./RelatedProducts";
 import ProductViewCounter from "./ProductViewCounter";
-import ShippingInfo from "./ShippingInfo";
+import "./productDetails.css";
 
 export default function ProductDetails() {
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const productId = parseInt(id, 10);
   const products = useSelector(selectDishes);
   const wishlist = useSelector(selectWishlistItems);
-
-  const productId = Number(id);
-  const product = products.find((p) => p.id === productId);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [mainImage, setMainImage] = useState(
-    Array.isArray(product?.image) ? product.image[0] : product?.image
-  );
 
-  const isWishlisted = wishlist.some((item) => item.id === productId);
+  const product = products.find((p) => p.id === productId);
 
   if (!product) {
     return (
-      <div className="not-found">
-        <h2>Product not found!</h2>
+      <div className="container py-5 text-center">
+        <h3>Product not found ❌</h3>
+        <button className="btn btn-dark mt-3" onClick={() => navigate("/products")}>
+          <FaArrowLeft className="me-2" /> Back to Products
+        </button>
       </div>
     );
   }
+
+  const isWishlisted = wishlist.some((item) => item.id === product.id);
+
+  const handleWishlist = () => {
+    if (isWishlisted) {
+      dispatch(removeFromWishlist(product.id));
+      toast.info(`${product.name} removed from wishlist 💔`, { autoClose: 1500 });
+    } else {
+      dispatch(addToWishlist(product));
+      toast.success(`${product.name} added to wishlist ❤️`, { autoClose: 1500 });
+    }
+  };
 
   const handleAddToCart = () => {
     dispatch(
@@ -53,123 +66,135 @@ export default function ProductDetails() {
         quantity,
       })
     );
-    toast.success(`${product.name} added to cart! 🛒`, {
-      position: "top-right",
-      autoClose: 2000,
-    });
+    toast.success(`${product.name} (x${quantity}) added to cart!`, { autoClose: 2000 });
   };
 
-  const handleWishlist = () => {
-    if (isWishlisted) {
-      dispatch(removeFromWishlist(product.id));
-      toast.info(`${product.name} removed from wishlist 💔`, {
-        position: "top-right",
-        autoClose: 1500,
-      });
-    } else {
-      dispatch(addToWishlist(product));
-      toast.success(`${product.name} added to wishlist ❤️`, {
-        position: "top-right",
-        autoClose: 1500,
-      });
-    }
+  const handleQtyChange = (type) => {
+    setQuantity((prev) => (type === "inc" ? prev + 1 : prev > 1 ? prev - 1 : 1));
   };
 
   return (
     <>
       <PageHeader title="Product Details" breadcrumb="Details" />
+      <div className="container py-5 product-details-page">
+        <button className="btn btn-outline-dark mb-4" onClick={() => navigate(-1)}>
+          <FaArrowLeft className="me-2" /> Back
+        </button>
 
-      <div className="product-details-container">
-        {/* LEFT IMAGE SECTION */}
-        <div className="left-image">
-          <img src={mainImage} alt={product.name} className="main-img" />
-
-          {Array.isArray(product.image) && product.image.length > 1 && (
-            <OwlCarousel
-              className="owl-theme thumbnails-carousel"
-              items={5}
-              margin={10}
-              nav
-              dots={false}
-              loop
-              autoplay
-              autoplayTimeout={3000}
-              autoplayHoverPause
-              responsive={{
-                0: { items: 2 },
-                600: { items: 3 },
-                1000: { items: 4 },
-              }}
+        <div className="row g-5 align-items-start">
+          {/* ===== Left Image ===== */}
+          <div className="col-lg-6 col-md-12">
+            <motion.div
+              className="main-img-container"
+              whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(198,40,40,0.3)" }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
-              {product.image.map((img, index) => (
-                <img
-                  key={index}
-                  src={img}
-                  alt={`thumb-${index}`}
-                  className={`thumbnail-img ${
-                    mainImage === img ? "active" : ""
-                  }`}
-                  onClick={() => setMainImage(img)}
-                />
-              ))}
-            </OwlCarousel>
-          )}
-        </div>
+              <img
+                src={Array.isArray(product.image) ? product.image[0] : product.image}
+                alt={product.name}
+                className="img-fluid main-img rounded-4"
+              />
+            </motion.div>
 
-        {/* RIGHT INFO SECTION */}
-        <div className="right-info">
-          <h2 className="product-name">{product.name}</h2>
-          <p className="product-category">{product.category}</p>
-          <p className="product-description">{product.description}</p>
-
-          <div className="product-price">
-            {product.oldPrice && (
-              <span className="old-price">${product.oldPrice.toFixed(2)}</span>
+            {Array.isArray(product.image) && (
+              <div className="thumbs mt-3 d-flex gap-3 justify-content-center flex-wrap">
+                {product.image.map((img, index) => (
+                  <motion.img
+                    key={index}
+                    src={img}
+                    alt={product.name}
+                    className="thumb-img"
+                    whileHover={{ scale: 1.1, rotate: 2 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    onClick={(e) => {
+                      document.querySelector(".main-img").src = e.target.src;
+                    }}
+                  />
+                ))}
+              </div>
             )}
-            <span className="current-price">${product.price.toFixed(2)}</span>
           </div>
 
-          <div className="quantity-selector">
-            <button
-              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-              aria-label="Decrease quantity"
-            >
-              −
-            </button>
-            <span>{quantity}</span>
-            <button
-              onClick={() => setQuantity((prev) => prev + 1)}
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
+          {/* ===== Right Text Info ===== */}
+          <div className="col-lg-6 col-md-12">
+            <div className="product-info-section">
+              <h2 className="fw-bold product-title mb-3">{product.name}</h2>
+              <p className="text-muted product-category">{product.category}</p>
+
+              <div className="price-box mb-4">
+                {product.oldPrice && (
+                  <span className="text-decoration-line-through text-muted me-2">
+                    ${product.oldPrice.toFixed(2)}
+                  </span>
+                )}
+                <span className="text-ketchup fw-bold fs-4">
+                  ${product.price.toFixed(2)}
+                </span>
+              </div>
+
+              <p className="mb-4 product-description">{product.description}</p>
+
+              {/* Qty Control */}
+              <div className="qty-section d-flex align-items-center mb-4">
+                <span className="fw-semibold me-3">Qty:</span>
+                <div className="qty-control d-flex align-items-center">
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
+                    className="qty-btn"
+                    onClick={() => handleQtyChange("dec")}
+                  >
+                    <FaMinus />
+                  </motion.button>
+                  <span className="qty-value">{quantity}</span>
+                  <motion.button
+                    whileTap={{ scale: 0.9 }}
+                    className="qty-btn"
+                    onClick={() => handleQtyChange("inc")}
+                  >
+                    <FaPlus />
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="d-flex flex-wrap gap-3 mb-3">
+                <motion.button
+                  className="btn  rounded-pill px-4 add-cart-btn"
+                  onClick={handleAddToCart}
+                  whileHover={{
+                    scale: 1.07,
+                    boxShadow: "0px 8px 25px rgba(198, 40, 40, 0.4)",
+                  }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  <FaShoppingCart className="me-2" /> Add to Cart
+                </motion.button>
+
+                <motion.button
+                  className={`btn rounded-pill px-4 ${
+                    isWishlisted ? "btn-ketchup" : "btn-outline-ketchup"
+                  }`}
+                  onClick={handleWishlist}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0px 8px 25px rgba(198, 40, 40, 0.4)",
+                  }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  <FaHeart className="me-2" />
+                  {isWishlisted ? "Remove Wishlist" : "Add to Wishlist"}
+                </motion.button>
+              </div>
+
+              <ProductViewCounter min={10} max={100} interval={3000} />
+            </div>
           </div>
-
-          <div className="cart-wishlist-row">
-            <button className="add-cart-btn" onClick={handleAddToCart}>
-              <FaShoppingCart className="me-2" /> ADD TO CART
-            </button>
-
-            <button
-              className={`wishlist-icon ${isWishlisted ? "active" : ""}`}
-              onClick={handleWishlist}
-              aria-label="Toggle Wishlist"
-            >
-              <FaHeart />
-            </button>
-          </div>
-
-          {/* Live viewers */}
-          <ProductViewCounter min={10} max={100} interval={3000} />
-
-          {/* Shipping info */}
-          {/* <ShippingInfo days={2} /> */}
         </div>
 
         <ToastContainer />
       </div>
 
-      {/* <RelatedProducts currentProductId={product.id} /> */}
+      <RelatedProductsCarousel currentProductId={product.id} />
     </>
   );
 }
