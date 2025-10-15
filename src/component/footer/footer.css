@@ -25,12 +25,6 @@
   gap: 18px;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .footer-logo-img {
   width: 160px;
   position: relative;
@@ -59,15 +53,13 @@
   color: #fff;
 }
 
-.footer-links,
-.footer-contact {
+.footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-links li,
-.footer-contact li {
+.footer-links li {
   margin-bottom: 10px;
   font-size: 15px;
 }
@@ -82,12 +74,19 @@
   color: #ff0033;
 }
 
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .footer-contact li {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
   color: #ccc;
+  font-size: 14px;
+  margin-bottom: 12px;
 }
 
 .footer-contact li svg {
@@ -95,6 +94,7 @@
   font-size: 18px;
 }
 
+/* Newsletter */
 .newsletter-box {
   display: flex;
   align-items: center;
@@ -111,15 +111,10 @@
   font-size: 15px;
   outline: none;
   padding: 10px 0;
-  transition: 0.3s;
 }
 
 .newsletter-input::placeholder {
   color: #bbb;
-}
-
-.newsletter-input:focus {
-  border-bottom: 1px solid #ff0033;
 }
 
 .footer-btn {
@@ -136,9 +131,9 @@
 .footer-btn:hover {
   background: #fff;
   color: #ff0033;
-  transform: scale(1.05);
 }
 
+/* Social icons */
 .footer-social {
   margin-top: 25px;
 }
@@ -154,31 +149,29 @@
 .social-icons {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 14px;
 }
 
-.social-icons svg {
-  width: 40px;
-  height: 40px;
-  background: #fff;
-  color: #032224;
-  border-radius: 50%;
+.social-icons a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  color: #032224;
+  border-radius: 50%;
+  font-size: 18px;
   transition: all 0.35s ease;
+  text-decoration: none;
 }
 
-.social-icons svg:hover {
+.social-icons a:hover {
   background: linear-gradient(135deg, #ff0033, #ff4747);
   color: #fff;
-  transform: scale(1.15) rotate(15deg);
-  box-shadow: 0 4px 12px rgba(255, 0, 51, 0.5);
 }
 
+/* Bottom */
 .footer-bottom {
   margin-top: 50px;
   font-size: 14px;
@@ -188,6 +181,7 @@
   padding-top: 25px;
 }
 
+/* Responsive */
 @media (max-width: 992px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import logo from "../../img/Rudraalogo.png";
 import { NavLink } from "react-router-dom";
 import {
@@ -9,25 +9,9 @@ import {
   FaMapMarkerAlt,
   FaEnvelope,
 } from "react-icons/fa";
-import { gsap } from "gsap";
 import "./footer.css";
 
 const Footer = () => {
-  const socialRefs = useRef([]);
-
-  useEffect(() => {
-    // GSAP animation for social icons
-    gsap.from(socialRefs.current, {
-      opacity: 0,
-      scale: 0,
-      rotation: -360,
-      y: 30,
-      stagger: 0.2,
-      ease: "back.out(1.7)",
-      duration: 1,
-    });
-  }, []);
-
   return (
     <footer className="footer">
       <div className="footer-inner">
@@ -35,7 +19,11 @@ const Footer = () => {
           {/* Logo & Info */}
           <div className="footer-col">
             <div className="footer-logo">
-              <img src={logo} alt="Rudraa Foods Logo" className="footer-logo-img" />
+              <img
+                src={logo}
+                alt="Rudraa Foods Logo"
+                className="footer-logo-img"
+              />
             </div>
             <p className="footer-text">
               Discover authentic flavors, quality ingredients, and the taste of
@@ -77,8 +65,8 @@ const Footer = () => {
             <h5 className="footer-title">Contact Info</h5>
             <ul className="footer-contact">
               <li>
-                <FaMapMarkerAlt /> Plot No. 36-37, Sai Shraddha Industrial Estate,
-                Near Masama Road, Olpad, Surat - 394540
+                <FaMapMarkerAlt /> Plot No. 36-37, Sai Shraddha Industrial
+                Estate, Near Masama Road, Olpad, Surat - 394540
               </li>
               <li>
                 <FaPhoneAlt /> +91 9601481587
@@ -109,13 +97,27 @@ const Footer = () => {
             <div className="footer-social">
               <span>Follow Us:</span>
               <div className="social-icons">
-                {[FaFacebookF, FaInstagram, FaLinkedinIn].map((Icon, index) => (
-                  <Icon
-                    key={index}
-                    ref={(el) => (socialRefs.current[index] = el)}
-                    className="social-icon"
-                  />
-                ))}
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebookF />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedinIn />
+                </a>
               </div>
             </div>
           </div>
