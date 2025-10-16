@@ -124,7 +124,7 @@ const Footer = () => {
         </div>
 
         <p className="footer-bottom">
-          © 2025 <strong>Rudraa Foods</strong>. All Rights Reserved
+          © 2025 <strong>Rudraa Foods</strong>. All Rights Reserved Nexa infotech
         </p>
       </div>
     </footer>
