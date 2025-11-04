@@ -21,12 +21,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   align-items: center;
-  gap: 60px;
+  gap: 70px;
 }
 
 /* === LEFT SIDE === */
 .product-left {
   position: relative;
+  text-align: center;
 }
 
 .image-label {
@@ -44,7 +45,6 @@
   animation: floatLabel 2s ease-in-out infinite alternate;
 }
 
-/* Floating label animation */
 @keyframes floatLabel {
   from {
     transform: translateY(0);
@@ -54,25 +54,21 @@
   }
 }
 
-/* Icon inside label */
 .label-icon {
   font-size: 22px;
   color: #fff;
 }
 
-/* Count animation text */
 .label-count {
   font-size: 24px;
   font-weight: 700;
   color: #fff;
 }
 
-/* Label extra text */
 .label-text {
   font-size: 18px;
 }
 
-/* Ketchup Image - Enlarged */
 .product-img1 {
   max-width: 480px;
   width: 100%;
@@ -135,7 +131,6 @@
   color: #d71916;
 }
 
-/* Grid for service boxes */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -181,14 +176,55 @@
   transform: scale(1.05);
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 992px) {
+/* ======================================================= */
+/* === RESPONSIVE DESIGN === */
+/* ======================================================= */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .product-section {
+    padding: 80px 0;
+  }
+
   .product-grid {
+    gap: 50px;
+  }
+
+  .product-title {
+    font-size: 32px;
+  }
+
+  .product-subtitle {
+    font-size: 16px;
+  }
+
+  .product-features li {
+    font-size: 15px;
+  }
+
+  .product-img1 {
+    max-width: 420px;
+  }
+}
+
+/* Tablets Portrait / Large Mobiles (≤768px) */
+@media (max-width: 768px) {
+  .product-section {
+    padding: 70px 0;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
     text-align: center;
     gap: 40px;
   }
 
+  .product-left {
+    order: 1;
+  }
+
   .product-right {
+    order: 2;
     align-items: center;
   }
 
@@ -197,10 +233,66 @@
   }
 
   .product-subtitle {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   .product-btn {
     align-self: center;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .service-box {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+}
+
+/* Small Mobiles (≤480px) */
+@media (max-width: 480px) {
+  .product-section {
+    padding: 60px 0;
+  }
+
+  .image-label {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .label-count {
+    font-size: 20px;
+  }
+
+  .product-img1 {
+    max-width: 320px;
+  }
+
+  .product-title {
+    font-size: 26px;
+  }
+
+  .product-subtitle {
+    font-size: 14px;
+  }
+
+  .product-features li {
+    font-size: 14px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-box {
+    font-size: 13px;
+  }
+
+  .product-btn {
+    font-size: 15px;
+    padding: 12px 28px;
   }
 }
