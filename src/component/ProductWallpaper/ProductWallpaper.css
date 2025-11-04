@@ -1,37 +1,39 @@
+/* ---------- Base Section ---------- */
 .product-wallpaper {
   background: linear-gradient(135deg, #101010, #1c1c1c 60%);
-  padding: 80px 20px;
+  padding: 50px 20px;
   font-family: "Poppins", sans-serif;
   overflow: hidden;
 }
 
-/* Container */
+/* ---------- Layout Container ---------- */
 .product-wallpaper-container {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  max-width: 1296px;
+  max-width: 1200px;
   margin: auto;
-  gap: 50px;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
-/* === LEFT SIDE === */
+/* ---------- LEFT SIDE ---------- */
 .wallpaper-left {
   flex: 1;
-  min-width: 340px;
+  min-width: 350px;
+  height: auto;
   background: url("../../img/back4.jpg") center/cover no-repeat;
   border-radius: 20px;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .big-img {
   width: 100%;
-  max-width: 500px;
+  max-width: 420px;
   height: auto;
   transition: transform 0.6s ease, filter 0.6s ease;
 }
@@ -41,49 +43,43 @@
   filter: brightness(1.15);
 }
 
-/* === RIGHT SIDE === */
+/* ---------- RIGHT SIDE ---------- */
 .wallpaper-right {
   flex: 1;
-  min-width: 380px;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  gap: 30px;
+  justify-content: space-between;
+  gap: 40px;
 }
 
-/* Each horizontal block */
+/* ---------- RIGHT ITEM CARDS ---------- */
+.right-item1,
+.right-item2 {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
 .right-item1 {
   background: url("../../img/back7.jpg") center/cover no-repeat;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  padding: 25px;
-  height: 350px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.right-item2 {
-  background: url("../../img/back5.jpg") center/cover no-repeat;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  padding: 25px;
-  height: 360px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.right-item1:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+.right-item2 {
+  background: url("../../img/back5.jpg") center/cover no-repeat;
 }
+
+.right-item1:hover,
 .right-item2:hover {
   transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 25px rgba(255, 255, 255, 0.1);
 }
-/* Image inside cards */
+
+/* ---------- IMAGES ---------- */
 .small-img {
   width: 230px;
   height: 230px;
@@ -92,21 +88,19 @@
   transition: transform 0.5s ease;
 }
 
-.right-item1:hover .small-img {
-  transform: scale(1.08);
-}
+.right-item1:hover .small-img,
 .right-item2:hover .small-img {
   transform: scale(1.08);
 }
 
-/* Text */
+/* ---------- TEXT BOX ---------- */
 .text-box {
   color: #fff;
   flex: 1;
 }
 
 .text-box h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: #ff4b4b;
   margin-bottom: 10px;
@@ -114,34 +108,108 @@
 
 .text-box p {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   color: #e0e0e0;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 992px) {
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+/* Tablets and Small Laptops */
+@media (max-width: 1024px) {
+  .product-wallpaper {
+    padding: 80px 30px;
+  }
+
   .product-wallpaper-container {
-    flex-direction: column;
-    align-items: center;
+    gap: 40px;
   }
 
   .wallpaper-left,
   .wallpaper-right {
-    width: 100%;
+    min-width: 100%;
   }
 
-  .right-item {
+  .right-item1,
+  .right-item2 {
+    height: auto;
+    gap: 20px;
+  }
+
+  .text-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .small-img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Tablets (Portrait) & Large Mobiles */
+@media (max-width: 768px) {
+  .product-wallpaper {
+    padding: 70px 20px;
+  }
+
+  .product-wallpaper-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .wallpaper-left {
+    padding: 20px;
+  }
+
+  .wallpaper-right {
+    gap: 30px;
+  }
+
+  .right-item1,
+  .right-item2 {
     flex-direction: column;
     text-align: center;
+    padding: 20px;
+  }
+
+  .small-img {
+    width: 80%;
+    max-width: 280px;
     height: auto;
+  }
+
+  .text-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .text-box p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+  .product-wallpaper {
+    padding: 60px 15px;
+  }
+
+  .wallpaper-left {
+    padding: 10px;
+  }
+
+  .big-img {
+    max-width: 300px;
   }
 
   .small-img {
     width: 100%;
-    max-width: 320px;
+    max-width: 250px;
   }
 
-  .text-box {
-    padding-top: 10px;
+  .text-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .text-box p {
+    font-size: 0.9rem;
   }
 }
