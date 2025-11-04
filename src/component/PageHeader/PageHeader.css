@@ -1,7 +1,7 @@
-/* 🌆 Common Page Header with Dark Overlay */
+/* 🌆 Common Page Header Section */
 .page-header {
   position: relative;
-  background-image: url("../../img/back8.jpg"); /* ✅ same background for all pages */
+  background-image: url("../../img/back8.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,36 +11,53 @@
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
 }
 
+/* Dark overlay for readability */
 .page-header .overlay {
   position: absolute;
   inset: 0;
-  /* background: rgba(0, 0, 0, 0.6); */
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
+  backdrop-filter: blur(2px);
 }
 
+/* Content area */
 .page-header .content {
   position: relative;
   z-index: 2;
+  padding: 0 20px;
   color: #fff;
 }
 
+/* Title */
 .page-header .page-title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
   text-transform: capitalize;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
+/* Breadcrumb text */
 .page-header .breadcrumb {
-  font-size: 1rem;
-  color: #eee;
+  font-size: 1.1rem;
+  color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .page-header .breadcrumb a {
   color: #fff;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   transition: color 0.3s ease;
 }
 
@@ -48,12 +65,59 @@
   color: #ffcc00;
 }
 
-/* Responsive */
+/* =====================================
+   📱 RESPONSIVE DESIGN
+===================================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .page-header {
+    height: 320px;
+  }
+  .page-header .page-title {
+    font-size: 2.4rem;
+  }
+  .page-header .breadcrumb {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile devices */
 @media (max-width: 768px) {
   .page-header {
-    height: 220px;
+    height: 240px;
+    padding: 0 15px;
   }
   .page-header .page-title {
     font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  .page-header .breadcrumb {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .page-header {
+    height: 200px;
+  }
+  .page-header .page-title {
+    font-size: 1.6rem;
+  }
+  .page-header .breadcrumb {
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+  .page-header {
+    height: 180px;
+  }
+  .page-header .page-title {
+    font-size: 1.4rem;
   }
 }
