@@ -1,19 +1,19 @@
-import { g } from "framer-motion/client";
+
 import d1 from "../img/popular/DarkSoya/1.png";
 import d2 from "../img/popular/DarkSoya/2.png";
 import d3 from "../img/popular/DarkSoya/3.png";
 
-import g1 from "../img/popular/GreenChilli/1.png";
-import g2 from "../img/popular/GreenChilli/2.png";
-import g3 from "../img/popular/GreenChilli/3.png";
+import g1 from "../img/popular/greenchilli/1.png";
+import g2 from "../img/popular/greenchilli/2.png";
+import g3 from "../img/popular/greenchilli/3.png";
 
-import r1 from "../img/popular/RedChilli/1.png";
-import r2 from "../img/popular/RedChilli/2.png";
-import r3 from "../img/popular/RedChilli/3.png";
+import r1 from "../img/popular/redchilli/1.png";
+import r2 from "../img/popular/redchilli/2.png";
+import r3 from "../img/popular/redchilli/3.png";
 
-import r4 from "../img/popular/RedChilli/4.png";
-import r5 from "../img/popular/RedChilli/5.png";
-import r6 from "../img/popular/RedChilli/6.png";
+import r4 from "../img/popular/redchilli/4.png";
+import r5 from "../img/popular/redchilli/5.png";
+import r6 from "../img/popular/redchilli/6.png";
 
 import w1 from "../img/popular/Whitevinegar/1.png";
 import w2 from "../img/popular/Whitevinegar/2.png";
