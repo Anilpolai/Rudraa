@@ -60,13 +60,13 @@ export default function ProductWallpaper() {
       <div className="product-wallpaper-container">
         {/* Left side - tall ketchup bottle */}
         <div className="wallpaper-left">
-          <img src={k1} alt="Ketchup Bottle" className="big-img" />
+          <img src={k2} alt="Ketchup Bottle" className="big-img" />
         </div>
 
         {/* Right side - info cards */}
         <div className="wallpaper-right">
           <div className="right-item1">
-            <img src={k2} alt="Ketchup Product" className="small-img" />
+            <img src={k1} alt="Ketchup Product" className="small-img" />
             <div className="text-box">
               <h3>Premium Tomato Ketchup</h3>
               <p>
