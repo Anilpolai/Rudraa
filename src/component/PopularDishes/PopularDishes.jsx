@@ -71,7 +71,7 @@ export default function PopularDishes() {
         <h2 className="section-title mb-5">Our Popular Dishes</h2>
 
         <div className="row g-4 justify-content-center">
-          {dishes.map((dish, index) => {
+          {dishes.slice(0, 8).map((dish, index) => {
             const { id, name, category, price, oldPrice, badge, image } = dish;
             const mainImage = Array.isArray(image)
               ? mainImages[id] || image[0]
@@ -115,7 +115,9 @@ export default function PopularDishes() {
                   </div>
 
                   <div className="product-info text-center mt-3">
-                    <small className="text-uppercase text-muted">{category}</small>
+                    <small className="text-uppercase text-muted">
+                      {category}
+                    </small>
                     <h5 className="mt-1 fw-semibold">{name}</h5>
                     <p className="price">
                       {oldPrice && (
@@ -126,7 +128,9 @@ export default function PopularDishes() {
                         </span>
                       )}
                       <span className="text-danger fw-bold">
-                        {typeof price === "number" ? `$${price.toFixed(2)}` : price}
+                        {typeof price === "number"
+                          ? `$${price.toFixed(2)}`
+                          : price}
                       </span>
                     </p>
 
