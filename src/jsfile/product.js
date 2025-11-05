@@ -123,7 +123,7 @@ const product = {
       oldPrice: null,
       badge: "100% Organic",
       weight: "1kg",
-      image: [d4,d5,d6,d7],
+      image: [d4,d5],
       description:
         "Made from certified organic tomatoes with no artificial additives. Ideal for health-conscious consumers and organic retailers.",
     },
@@ -229,7 +229,7 @@ const product = {
       oldPrice: 5.0,
       badge: "Best Seller",
       weight: "1kg",
-      image: [t8, t9,t10,t11,t12],
+      image: [t8, t9,t10,t11],
       description:
         "Crafted from the finest sun-ripened tomatoes, this ketchup delivers a perfectly balanced tangy and sweet flavor ideal for all meals.",
     },
@@ -269,7 +269,18 @@ const product = {
       description:
         "Crafted from the finest sun-ripened tomatoes, this ketchup delivers a perfectly balanced tangy and sweet flavor ideal for all meals.",
     },
-    
+    {
+      id: 19,
+      name: "Organic Ketchup",
+      category: "Natural, Eco-Friendly",
+      price: 5.5,
+      oldPrice: null,
+      badge: "100% Organic",
+      weight: "1kg",
+      image: [d6,d7],
+      description:
+        "Made from certified organic tomatoes with no artificial additives. Ideal for health-conscious consumers and organic retailers.",
+    },
   ],
 };
 
