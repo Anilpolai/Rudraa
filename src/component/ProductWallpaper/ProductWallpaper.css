@@ -32,8 +32,6 @@
 }
 
 .big-img {
-  position: relative;
-  top: 170px;
   width: 100%;
   max-width: 420px;
   height: auto;
