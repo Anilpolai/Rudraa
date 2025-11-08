@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./KetchupOffer.css";
-import ketchupImg from "../../img/ketchup/ketchup2.jpeg"; // ketchup image
+import ketchupImg from "../../img/ketchup/ketchup2.png"; // ketchup image
 import bgImg from "../../img/back6.jpg"; // textured background
 
 export default function KetchupOffer() {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProductSection.css";
-import ketchup1 from "../../img/ketchup/ketchup1.jpg";
+import ketchup1 from "../../img/ketchup/ketchup1.png";
 import { FaFire } from "react-icons/fa"; // Replaced with a more relevant icon (heat/energy)
 
 export default function ProductSection() {
