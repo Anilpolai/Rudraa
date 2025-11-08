@@ -9,7 +9,7 @@ const review = {
       text: "This ketchup brings a perfect balance of sweetness and tang. It elevated every dish we tried it with. The packaging and taste both scream premium!",
       foodImg: "/images/review-food1.jpg",
       userImg: "/images/user1.jpg",
-      name: "Emma Johnson",
+      name: "Ashok kumar",
       role: "Restaurant Owner",
     },
     {
@@ -19,7 +19,7 @@ const review = {
       text: "We’ve switched entirely to this ketchup brand in our diner. Customers keep complimenting its freshness and flavor. Highly recommend for bulk buyers!",
       foodImg: "/images/review-food2.jpg",
       userImg: "/images/user2.jpg",
-      name: "Liam Carter",
+      name: "Priya Singh",
       role: "Café Manager",
     },
   ],
